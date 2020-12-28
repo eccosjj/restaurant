@@ -21,7 +21,8 @@ public class Kitchen implements Runnable {
     public void run() {
         try {
             cookedOrder.setOrderStatus(OrderStatus.Cooked);
-            cookedOrder = this.orderManager.tryPutIntoShelf(cookedOrder, null);
+            cookedOrder.setOrderedTimestamp();
+            this.orderManager.tryPutIntoShelf(cookedOrder, null);
             this.restaurant.notifyCourier(cookedOrder, countCourier);
         } finally {
             this.countKitchen.countDown();

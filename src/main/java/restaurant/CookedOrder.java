@@ -110,8 +110,8 @@ public class CookedOrder {
         return orderedTimestamp;
     }
 
-    public void setOrderedTimestamp(long orderedTimestamp) {
-        this.orderedTimestamp = orderedTimestamp;
+    public void setOrderedTimestamp() {
+        this.orderedTimestamp = System.currentTimeMillis();
     }
 
     public float getFinalValue() {

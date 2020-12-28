@@ -16,7 +16,6 @@ public class Restaurant implements Delivery {
     private String orderConfig = "orders.json";
     private OrderManagerImpl orderManager;
     private List<CookedOrder> orders;
-    public static boolean Restaurant_Is_Open = true;
     // BlockingQueue<CookedOrder> queue = new LinkedBlockingQueue<CookedOrder>(10);
 
     public Restaurant() {
@@ -69,8 +68,6 @@ public class Restaurant implements Delivery {
     }
 
     private void startService() {
-        // new Monitor(this.orderManager).start();
-        // Monitor monitor = new Monitor(this.orderManager);
         final CountDownLatch countKitchen = new CountDownLatch(orders.size());
         final CountDownLatch countCourier = new CountDownLatch(orders.size());
         final ExecutorService executorService = Executors.newFixedThreadPool(2);
@@ -78,14 +75,14 @@ public class Restaurant implements Delivery {
         for (CookedOrder order : orders) {
             executorService.submit(new Kitchen(this, orderManager, order, countKitchen, countCourier));
             receiveOrderCount++;
-            if (receiveOrderCount % 2 == 0) {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
+            // if (receiveOrderCount % 2 == 0) {
+            // try {
+            // Thread.sleep(1000);
+            // } catch (InterruptedException e) {
+            // // TODO Auto-generated catch block
+            // e.printStackTrace();
+            // }
+            // }
         }
         try {
             countKitchen.await();
@@ -95,8 +92,6 @@ public class Restaurant implements Delivery {
             e.printStackTrace();
         }
         executorService.shutdown();
-        Restaurant_Is_Open = false;
-
     }
 
     public void notifyCourier(CookedOrder cookedOrder, CountDownLatch countCourier) {
