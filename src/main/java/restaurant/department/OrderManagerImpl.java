@@ -15,8 +15,7 @@ import restaurant.pojo.ShelfInfo;
 import restaurante.constants.OrderStatus;
 
 public class OrderManagerImpl implements OrderManager {
-    private static Logger log = Logger.getLogger(OrderManagerImpl.class);
-
+    Logger log = Logger.getLogger(OrderManagerImpl.class);
     private Map<String, Map<String, CookedOrder>> ordersInShelves;
     private Map<String, ShelfInfo> shelfInfos;
     private Vector<CookedOrder> deliveredOrders;
@@ -39,25 +38,22 @@ public class OrderManagerImpl implements OrderManager {
                 returnOrder.setOrderStatus(OrderStatus.Wasted);
                 this.deliveredOrders.add(returnOrder);
             }
-            this.displayAllOrderStatus();
+            // this.displayAllOrderStatus();
 
         }
         return returnOrder;
     }
 
-    private void putIntoShelf(CookedOrder cookedOrder, String allowedTemperature) {
+    public boolean putIntoShelf(CookedOrder cookedOrder, String allowedTemperature) {
         Map<String, CookedOrder> singleTempShelf = this.ordersInShelves.get(allowedTemperature);
         if (singleTempShelf == null) {
-            this.tryPutIntoShelf(cookedOrder, singleTempShelf);
-            return;
+            return false;
         }
         ShelfInfo shelfInfo = this.shelfInfos.get(allowedTemperature);
         int allowedCapacity = shelfInfo.getCapacity();
         if (singleTempShelf.size() == allowedCapacity) {
-            this.tryPutIntoShelf(cookedOrder, singleTempShelf);
-            return;
+            return false;
         }
-        boolean putIntoOtherShelf = false;
         synchronized (singleTempShelf) {
             if (singleTempShelf.size() < allowedCapacity) {
                 OrderStatus currentOrderStatus = cookedOrder.getOrderStatus();
@@ -67,52 +63,24 @@ public class OrderManagerImpl implements OrderManager {
                 // cookedOrder.setFinalValue();
                 // cookedOrder.setOrderedTimestamp();
                 singleTempShelf.put(cookedOrder.getId(), cookedOrder);
-                if (currentOrderStatus.equals(OrderStatus.MoveOutFromOverFlowFailed)
-                        || currentOrderStatus.equals(OrderStatus.InTheShelf)) {
+                if (currentOrderStatus.equals(OrderStatus.InTheShelf)) {
                     log.info("Successfully move the order <" + cookedOrder.getId() + "> to the " + shelfInfo.getName());
                 }
                 log.trace("Successfully put the order <" + cookedOrder.getId() + "> to the " + shelfInfo.getName());
+                return true;
             } else {
-                putIntoOtherShelf = true;
+                return false;
             }
         }
-        if (putIntoOtherShelf) {
-            this.tryPutIntoShelf(cookedOrder, singleTempShelf);
-        }
+
     }
 
-    public void tryPutIntoShelf(CookedOrder cookedOrder, Map<String, CookedOrder> singleTempShelf) {
-        ShelfInfo shelfInfo = this.shelfInfos.get(cookedOrder.getTemp());
-        ShelfInfo overflowShelfInfo = this.shelfInfos.get(this.overflowShelfKey);
-        switch (cookedOrder.getOrderStatus()) {
-        case Cooked:
-            cookedOrder.setOrderStatus(OrderStatus.tryPutIntoSpecificShelf);
-            log.trace("Try to put the order:" + cookedOrder.getId() + " into " + shelfInfo.getName());
-            putIntoShelf(cookedOrder, cookedOrder.getTemp());
-            break;
-        case tryPutIntoSpecificShelf:
-            log.trace("Failed to put the order:" + cookedOrder.getId() + " into " + shelfInfo.getName()
-                    + ", now try to put it into " + overflowShelfInfo.getName());
-            cookedOrder.setOrderStatus(OrderStatus.TryPutIntoOverFlowShelf);
-            putIntoShelf(cookedOrder, this.overflowShelfKey);
-            break;
-        case TryPutIntoOverFlowShelf:
-            log.trace("Failed to put the order:" + cookedOrder.getId() + "into " + overflowShelfInfo.getName());
-            this.moveOutOrderFromOverFlow(singleTempShelf, overflowShelfInfo, cookedOrder);
-            break;
-        case InTheShelf:
-            cookedOrder.setOrderStatus(OrderStatus.MoveOutFromOverFlowFailed);
-            break;
-        default:
-            break;
-        }
-    }
-
-    private synchronized void moveOutOrderFromOverFlow(Map<String, CookedOrder> singleTempShelf,
-            ShelfInfo overflowShelfInfo, CookedOrder cookedOrder) {
+    public synchronized boolean moveOutOrderFromOverFlow(CookedOrder cookedOrder) {
         String selectedIndex = null;
         Integer selectIndex = 0;
         CookedOrder selectedOrder = null;
+        Map<String, CookedOrder> singleTempShelf = this.ordersInShelves.get(this.overflowShelfKey);
+        ShelfInfo overflowShelfInfo = shelfInfos.get(this.overflowShelfKey);
         Map<String, CookedOrder> userSelectOptions = new HashMap<String, CookedOrder>();
         boolean reallyFull = false;
         synchronized (singleTempShelf) {
@@ -132,18 +100,18 @@ public class OrderManagerImpl implements OrderManager {
         }
         if (reallyFull) {
             selectedIndex = this.getSelectedIndex();
-        }
-        if (selectedIndex == null || selectedIndex.trim().equals("")) {
-            log.info("You didn't choose any order.");
-        } else {
-            selectedOrder = userSelectOptions.get(selectedIndex);
-        }
-        if (selectedOrder == null) {
-            if (selectedIndex != null) {
-                log.info("The #No you choose in is not the option list");
+            if (selectedIndex == null || selectedIndex.trim().equals("")) {
+                log.info("You didn't choose any order.");
+            } else {
+                selectedOrder = userSelectOptions.get(selectedIndex);
+                if (selectedOrder == null) {
+                    if (selectedIndex != null) {
+                        log.info("The #No you choose in is not the option list");
+                    }
+                } else {
+                    log.info("You pick #No " + selectedIndex + " <" + selectedOrder.getId() + ">");
+                }
             }
-        } else {
-            log.info("You pick #No " + selectedIndex + " <" + selectedOrder.getId() + ">");
         }
         synchronized (singleTempShelf) {
             if (singleTempShelf.size() == overflowShelfInfo.getCapacity()) {
@@ -151,22 +119,21 @@ public class OrderManagerImpl implements OrderManager {
                     this.randomWastedOrder(singleTempShelf, overflowShelfInfo);
                 } else {
                     if (singleTempShelf.containsKey(selectedOrder.getId())) {
+                        boolean putSuccess = false;
                         for (String key : this.shelfInfos.keySet()) {
                             if (key.equals(this.overflowShelfKey))
                                 continue;
-                            selectedOrder.setOrderStatus(OrderStatus.InTheShelf);
-                            putIntoShelf(selectedOrder, key);
-                            if (selectedOrder.getOrderStatus().equals(OrderStatus.InTheShelf)) {
+                            if (putIntoShelf(selectedOrder, key)) {
+                                putSuccess = true;
                                 break;
                             }
                         }
-                        if (selectedOrder.getOrderStatus().equals(OrderStatus.InTheShelf)) {
+                        if (putSuccess) {
                             singleTempShelf.remove(selectedOrder.getId());
                         } else {
                             log.info("No shelf has rooms now, failed to move order <" + selectedOrder.getId()
                                     + ">, the system will randomly discard an order from the "
                                     + overflowShelfInfo.getName());
-                            selectedOrder.setOrderStatus(OrderStatus.InTheShelf);
                             randomWastedOrder(singleTempShelf, overflowShelfInfo);
                         }
                     } else {
@@ -178,12 +145,12 @@ public class OrderManagerImpl implements OrderManager {
                         randomWastedOrder(singleTempShelf, overflowShelfInfo);
                     }
                 }
-            } else {
+            } else if (reallyFull) {
                 log.info("The " + overflowShelfInfo.getName()
                         + " has rooms by the time you select,so the order you choose will stay in the "
                         + overflowShelfInfo.getName());
             }
-            putIntoShelf(cookedOrder, this.overflowShelfKey);
+            return putIntoShelf(cookedOrder, this.overflowShelfKey);
         }
     }
 

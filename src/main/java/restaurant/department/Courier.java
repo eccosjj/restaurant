@@ -2,6 +2,7 @@ package restaurant.department;
 
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
@@ -45,14 +46,13 @@ public class Courier extends Thread {
         String orderId = this.cookedOrder.getId();
         ShelfInfo shelfInfo = this.cookedOrder.getShelfInfo();
         log.trace("The courier get noticed to pick the order:" + orderId + " from " + shelfInfo.getName());
-        // try {
-        // int waitSecond = (new Random().nextInt(this.waitMax) % (this.waitMax -
-        // this.waitMin + 1) + this.waitMin);
-        // log.trace("The courier will pick the order in :" + waitSecond + " seconds");
-        // Thread.sleep(waitSecond * 1000);
-        // } catch (Exception e) {
-        // e.printStackTrace();
-        // }
+        try {
+            int waitSecond = (new Random().nextInt(this.waitMax) % (this.waitMax - this.waitMin + 1) + this.waitMin);
+            log.trace("The courier will pick the order in :" + waitSecond + " seconds");
+            Thread.sleep(waitSecond * 1000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         CookedOrder deliveryOrder = this.orderManager.takeOutOrder(shelfInfo.getAllowableTemperature(), orderId);
         if (deliveryOrder == null
                 && shelfInfo.getAllowableTemperature().equals(this.orderManager.getOverflowShelfKey())) {

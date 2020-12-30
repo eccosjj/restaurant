@@ -8,7 +8,9 @@ import restaurant.pojo.ShelfInfo;
 public interface OrderManager {
     CookedOrder takeOutOrder(String allowedTemperature, String orderId);
 
-    void tryPutIntoShelf(CookedOrder cookedOrder, Map<String, CookedOrder> singleTempShelf);
+    boolean putIntoShelf(CookedOrder cookedOrder, String allowedTemperature);
+
+    boolean moveOutOrderFromOverFlow(CookedOrder cookedOrder);
 
     String getOverflowShelfKey();
 
