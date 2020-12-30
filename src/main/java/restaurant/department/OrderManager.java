@@ -14,8 +14,4 @@ public interface OrderManager {
 
     Map<String, ShelfInfo> getShelfInfos();
 
-    void completeOrder(CookedOrder deliveryOrder);
-
-    void discardOrder(CookedOrder wastedOrder);
-
 }

@@ -7,20 +7,16 @@ import org.apache.log4j.Priority;
 import org.apache.log4j.spi.ErrorCode;
 
 /**
- * This is a customized log4j appender, which will create a new file for every
- * run of the application.
+ * This is a customized log4j appender, which will only accept the Threshold log
+ * in log4j.properties, and also generate new log file every time the
+ * application is running
  *
- * @author veera | https://veerasundar.com
+ * @author Junjie Sun
  *
  */
 public class MyFileAppender extends FileAppender {
 
     static final String newLogFolder = String.valueOf(System.currentTimeMillis());;
-
-    @Override
-    public boolean isAsSevereAsThreshold(Priority priority) {
-        return this.getThreshold().equals(priority);
-    }
 
     public void activateOptions() {
         if (fileName != null) {
@@ -42,4 +38,10 @@ public class MyFileAppender extends FileAppender {
         }
         return String.valueOf(newLogFolder);
     }
+
+    @Override
+    public boolean isAsSevereAsThreshold(Priority priority) {
+        return this.getThreshold().equals(priority);
+    }
+
 }

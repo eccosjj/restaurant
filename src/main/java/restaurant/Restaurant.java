@@ -4,9 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import org.apache.log4j.Logger;
 
@@ -21,7 +18,7 @@ import restaurant.pojo.CookedOrder;
 import restaurant.pojo.ShelfInfo;
 
 public class Restaurant {
-    static Logger log = Logger.getLogger(Restaurant.class);
+    private static Logger log = Logger.getLogger(Restaurant.class);
     private String shelfConfig = "shelves.json";
     private String orderConfig = "orders.json";
     private String config = "config.json";
@@ -111,37 +108,26 @@ public class Restaurant {
         if (this.waitMin < 0 || this.waitMax < 0) {
             throw new Exception("Nether wait_min nor wait_max can be lower than 0, please modify config.json.");
         }
-        if (this.waitMin >= this.waitMax) {
+        if (this.waitMin > this.waitMax) {
             throw new Exception("wait_max must greater wait_min, please modify config.json.");
         }
-        final CountDownLatch countKitchen = new CountDownLatch(orders.size());
-        final CountDownLatch countCourier = new CountDownLatch(orders.size());
-        final ExecutorService executorService = Executors.newFixedThreadPool(2);
         int receiveOrderCount = 0;
         for (CookedOrder order : orders) {
-            executorService.submit(new Kitchen(this, orderManager, order, countKitchen, countCourier));
+            new Kitchen(this, orderManager, order).start();
             receiveOrderCount++;
-            if (receiveOrderCount % this.oneTimeReceive == 0) {
-                try {
-                    Thread.sleep(this.pauseBetweenReceive * 1000);
-                } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
+            // if (receiveOrderCount % this.oneTimeReceive == 0) {
+            // try {
+            // Thread.sleep(this.pauseBetweenReceive * 1000);
+            // } catch (InterruptedException e) {
+            // // TODO Auto-generated catch block
+            // e.printStackTrace();
+            // }
+            // }
         }
-        try {
-            countKitchen.await();
-            countCourier.await();
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        executorService.shutdown();
     }
 
-    public void notifyCourier(CookedOrder cookedOrder, CountDownLatch countCourier) {
-        new Courier(cookedOrder, this.orderManager, countCourier, this.waitMin, this.waitMax).start();
+    public void notifyCourier(CookedOrder cookedOrder) {
+        new Courier(cookedOrder, this.orderManager, this.waitMin, this.waitMax).start();
     }
 
 }

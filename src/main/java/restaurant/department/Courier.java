@@ -2,27 +2,25 @@ package restaurant.department;
 
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Random;
 import java.util.Set;
-import java.util.concurrent.CountDownLatch;
+
+import org.apache.log4j.Logger;
 
 import restaurant.pojo.CookedOrder;
 import restaurant.pojo.ShelfInfo;
 
 public class Courier extends Thread {
+    private static Logger log = Logger.getLogger(Courier.class);
     private CookedOrder cookedOrder;
     private OrderManager orderManager;
     private Set<String> checkedShelves;
-    private CountDownLatch countCourier;
     private int waitMin;
     private int waitMax;
 
-    public Courier(CookedOrder cookedOrder, OrderManager orderManager, CountDownLatch countCourier, int waitMin,
-            int waitMax) {
+    public Courier(CookedOrder cookedOrder, OrderManager orderManager, int waitMin, int waitMax) {
         super();
         this.cookedOrder = cookedOrder;
         this.orderManager = orderManager;
-        this.countCourier = countCourier;
         this.waitMin = waitMin;
         this.waitMax = waitMax;
     }
@@ -44,40 +42,38 @@ public class Courier extends Thread {
     }
 
     public void run() {
-        // String orderId = this.cookedOrder.getId();
+        String orderId = this.cookedOrder.getId();
+        ShelfInfo shelfInfo = this.cookedOrder.getShelfInfo();
+        log.trace("The courier get noticed to pick the order:" + orderId + " from " + shelfInfo.getName());
         // try {
-        // Thread.sleep(
-        // (new Random().nextInt(this.waitMax) % (this.waitMax - this.waitMin + 1) +
-        // this.waitMin) * 1000);
-        // // String orderId = this.cookedOrder.getId();
-        // System.out.println("cookedOrder id:" + orderId);
-        // String allowableTemperature =
-        // this.cookedOrder.getShelfInfo().getAllowableTemperature();
-        // CookedOrder deliveryOrder =
-        // this.orderManager.takeOutOrder(allowableTemperature, orderId);
-        // if (deliveryOrder == null &&
-        // allowableTemperature.equals(this.orderManager.getOverflowShelfKey())) {
-        // checkedShelves = new HashSet<String>();
-        // checkedShelves.add(this.orderManager.getOverflowShelfKey());
-        // Map<String, ShelfInfo> shelfInfos = this.orderManager.getShelfInfos();
-        // for (String shelfInfoKey : shelfInfos.keySet()) {
-        // if (checkedShelves.contains(shelfInfoKey))
-        // continue;
-        // checkedShelves.add(shelfInfoKey);
-        // deliveryOrder = this.orderManager.takeOutOrder(shelfInfoKey, orderId);
-        // if (deliveryOrder != null)
-        // break;
-        // }
-        // }
-        // if (deliveryOrder == null) {
-        // System.out.println("Failed to delivery order:" + orderId + ", it should be
-        // already wasted");
-        // }
-        // } catch (InterruptedException e) {
+        // int waitSecond = (new Random().nextInt(this.waitMax) % (this.waitMax -
+        // this.waitMin + 1) + this.waitMin);
+        // log.trace("The courier will pick the order in :" + waitSecond + " seconds");
+        // Thread.sleep(waitSecond * 1000);
+        // } catch (Exception e) {
         // e.printStackTrace();
-        // } finally {
-        this.countCourier.countDown();
         // }
+        CookedOrder deliveryOrder = this.orderManager.takeOutOrder(shelfInfo.getAllowableTemperature(), orderId);
+        if (deliveryOrder == null
+                && shelfInfo.getAllowableTemperature().equals(this.orderManager.getOverflowShelfKey())) {
+            checkedShelves = new HashSet<String>();
+            checkedShelves.add(this.orderManager.getOverflowShelfKey());
+            Map<String, ShelfInfo> shelfInfos = this.orderManager.getShelfInfos();
+            for (String shelfInfoKey : shelfInfos.keySet()) {
+                if (checkedShelves.contains(shelfInfoKey))
+                    continue;
+                checkedShelves.add(shelfInfoKey);
+                deliveryOrder = this.orderManager.takeOutOrder(shelfInfoKey, orderId);
+                if (deliveryOrder != null)
+                    break;
+            }
+        }
+        if (deliveryOrder == null) {
+            log.trace("The courier failed to delivered the order:" + orderId + ". The order should be already discard");
+        } else {
+            log.trace("The courier delivered the order:" + orderId);
+        }
+
     }
 
 }

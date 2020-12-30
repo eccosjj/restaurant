@@ -1,45 +1,34 @@
 package restaurant.department;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.CountDownLatch;
+import org.apache.log4j.Logger;
 
 import restaurant.Restaurant;
 import restaurant.pojo.CookedOrder;
 import restaurante.constants.OrderStatus;
 
-public class Kitchen implements Runnable {
+public class Kitchen extends Thread {
+    Logger log = Logger.getLogger(Kitchen.class);
     private CookedOrder cookedOrder;
     private Restaurant restaurant;
     private OrderManager orderManager;
-    private CountDownLatch countKitchen;
-    private CountDownLatch countCourier;
 
-    public Kitchen(Restaurant restaurant, OrderManager orderManager, CookedOrder order, CountDownLatch countKitchen,
-            CountDownLatch countCourier) {
+    public Kitchen(Restaurant restaurant, OrderManager orderManager, CookedOrder order) {
         this.restaurant = restaurant;
         this.orderManager = orderManager;
         this.cookedOrder = order;
-        this.countKitchen = countKitchen;
-        this.countCourier = countCourier;
+
     }
 
     public void run() {
-        try {
-            cookedOrder.setOrderStatus(OrderStatus.Cooked);
-            cookedOrder.setOrderedTimestamp();
-            this.orderManager.tryPutIntoShelf(cookedOrder, null);
-            this.restaurant.notifyCourier(cookedOrder, countCourier);
-        } finally {
-            this.countKitchen.countDown();
-        }
-    }
-
-    public CookedOrder call() {
+        log.trace("The kitchen receive the order:" + cookedOrder.getId());
         cookedOrder.setOrderStatus(OrderStatus.Cooked);
         cookedOrder.setOrderedTimestamp();
+        log.trace("The kitchen cooked the order:" + cookedOrder.getId());
         this.orderManager.tryPutIntoShelf(cookedOrder, null);
-        this.restaurant.notifyCourier(cookedOrder, countCourier);
-        return cookedOrder;
+        log.trace("The kitchen put the order:" + cookedOrder.getId() + " into "
+                + cookedOrder.getShelfInfo().getAllowableTemperature() + "shelf and call the courier");
+        this.restaurant.notifyCourier(cookedOrder);
+
     }
 
 }

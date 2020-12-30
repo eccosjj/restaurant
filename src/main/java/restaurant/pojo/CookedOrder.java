@@ -21,7 +21,6 @@ public class CookedOrder {
     private long orderedTimestamp;
     // store the shelfInfo info, it's changing when put different Shelf.
     private ShelfInfo shelfInfo;
-
     private OrderStatus orderStatus;
 
     public String getId() {

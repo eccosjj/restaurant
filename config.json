@@ -4,8 +4,8 @@
         "pause_between_receive": 1
     },
     "courier": {
-        "wait_min": 30,
-        "wait_max": 100
+        "wait_min": 10,
+        "wait_max": 10
     },
-    "moving_order_time_out": 20
+    "moving_order_time_out": 1
 }
