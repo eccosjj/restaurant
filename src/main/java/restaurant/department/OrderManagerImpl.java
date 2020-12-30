@@ -1,24 +1,28 @@
-package restaurant;
+package restaurant.department;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 import java.util.Vector;
-import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
+
+import org.apache.log4j.Logger;
+
+import restaurant.pojo.CookedOrder;
+import restaurant.pojo.ShelfInfo;
+import restaurante.constants.OrderStatus;
 
 public class OrderManagerImpl implements OrderManager {
+    Logger log = Logger.getLogger(OrderManagerImpl.class);
+
     private Map<String, Map<String, CookedOrder>> ordersInShelves;
     private Map<String, ShelfInfo> shelfInfos;
     private Vector<CookedOrder> deliveredOrders;
     private Vector<CookedOrder> wastedOrders;
     private String overflowShelfKey;
+    private int movingOrderTimeOut;
 
     public CookedOrder takeOutOrder(String allowedTemperature, String orderId) {
         Map<String, CookedOrder> singleTempShelf = this.ordersInShelves.get(allowedTemperature);
@@ -80,12 +84,15 @@ public class OrderManagerImpl implements OrderManager {
                             "Put the order <" + cookedOrder.getId() + "> to the shelf <" + allowedTemperature + ">");
                 }
             } else {
-                putIntoOtherShelf = true;
+                if (allowedTemperature.equals(this.overflowShelfKey)) {
+                    this.tryPutIntoShelf(cookedOrder, singleTempShelf);
+                } else {
+                    putIntoOtherShelf = true;
+                }
             }
         }
         if (putIntoOtherShelf) {
             this.tryPutIntoShelf(cookedOrder, singleTempShelf);
-            return;
         }
     }
 
@@ -109,46 +116,26 @@ public class OrderManagerImpl implements OrderManager {
                     userSelectOptions.put(selectIndex.toString(), singleTempShelf.get(orderId));
                     selectIndex++;
                 }
-                System.out.println(
-                        "The OverFlow Shelf is full right now, please choose an order in 5 seconds, the order you choose will be moved to another Shelf which has rooms:");
+                log.info("The overflow shelf is full, please choose an order in " + this.movingOrderTimeOut
+                        + " seconds, it will be moved to another shelf.");
                 for (Integer index = 0; index < selectIndex; index++) {
-                    System.out.println("Index: " + index + " --> " + userSelectOptions.get(index.toString()).getId());
+                    log.info("#No " + index + " --> " + userSelectOptions.get(index.toString()).getId());
                 }
-
-                ExecutorService executorService = Executors.newSingleThreadExecutor();
-                try {
-                    Future<String> future = executorService.submit(new Callable<String>() {
-                        public String call() {
-                            String selectedIndex;
-                            java.util.Scanner in = null;
-                            try {
-                                in = new java.util.Scanner(System.in);
-                                selectedIndex = in.next();
-                            } finally {
-                                in.close();
-                            }
-                            return selectedIndex;
-                        }
-                    });
-                    selectedIndex = future.get(5, TimeUnit.SECONDS);
-                } catch (Exception e) {
-                    System.out.println("Choose order from " + this.overflowShelfKey
-                            + " time out, randomly discard an order from the shelf:" + this.overflowShelfKey);
-                } finally {
-                    executorService.shutdown();
-                }
-                if (selectedIndex != null) {
+                selectedIndex = this.getSelectedIndex();
+                if (selectedIndex == null || selectedIndex.trim().equals("")) {
+                    log.info("You didn't choose any order.");
+                } else {
                     selectedOrder = userSelectOptions.get(selectedIndex);
                 }
                 if (singleTempShelf.size() == this.ordersInShelves.get(this.overflowShelfKey).size()) {
                     if (selectedOrder == null) {
                         if (selectedIndex != null) {
-                            System.out.println(
-                                    "The index you typed in is not in the list, randomly discard an order from the shelf:"
-                                            + this.overflowShelfKey);
+                            log.info(
+                                    "The #No you choose in is not the option, the system will randomly discard an order in the overflow shelf");
                         }
                         this.randomWastedOrder(singleTempShelf);
                     } else {
+                        log.info("You pick #No " + selectedIndex + " <" + selectedOrder.getId() + ">");
                         if (singleTempShelf.containsKey(selectedOrder.getId())) {
                             String allowedTemperature = null;
                             for (String key : this.shelfInfos.keySet()) {
@@ -163,27 +150,22 @@ public class OrderManagerImpl implements OrderManager {
                             }
                             if (selectedOrder.getOrderStatus().equals(OrderStatus.InTheShelf)) {
                                 singleTempShelf.remove(selectedOrder.getId());
-                                this.displayAllOrderStatus(
-                                        "Move the order <" + cookedOrder.getId() + "> from the shelf <"
-                                                + this.overflowShelfKey + "> to <" + allowedTemperature + ">");
+                                this.displayAllOrderStatus("Successfully move the order <" + selectedOrder.getId()
+                                        + "> to the " + allowedTemperature + " shelf");
                             } else {
-                                System.out.println("Move the order <" + cookedOrder.getId() + "> from the shelf <"
-                                        + this.overflowShelfKey + "> to <" + allowedTemperature
-                                        + "> completed, randomly discard an order from the shelf:"
-                                        + this.overflowShelfKey);
+                                log.info("No shelf has rooms now, failed to move order <" + selectedOrder.getId()
+                                        + ">, the system will randomly discard an order from the overflow shelf");
                                 selectedOrder.setOrderStatus(OrderStatus.InTheShelf);
                                 randomWastedOrder(singleTempShelf);
                             }
                         } else {
-                            System.out.println("The order you choose is not in the shelf:" + this.overflowShelfKey
-                                    + ", so skip moving order, now randomly discard an order from the shelf:"
-                                    + this.overflowShelfKey);
+                            log.info(
+                                    "The order you choose might be allready delivered or moved to another shelf, it is not in the overflow shelf anymore.The system will randomly discard an order from the overflow shelf");
                             randomWastedOrder(singleTempShelf);
                         }
                     }
                 } else {
-                    System.out.println(
-                            "The " + this.overflowShelfKey + " shelf has rooms so there no need to move any order.");
+                    log.info("The overflow shelf has rooms now so it's no need to move any order.");
                 }
                 putIntoShelf(cookedOrder, this.overflowShelfKey);
             }
@@ -204,11 +186,12 @@ public class OrderManagerImpl implements OrderManager {
         randomWastedOrder.setOrderStatus(OrderStatus.Wasted);
         randomWastedOrder.setFinalValue();
         this.discardOrder(randomWastedOrder);
+        log.info("Random discard the order <" + randomWastedOrder.getId() + "> from the overflow shelf");
         this.displayAllOrderStatus("Random discard the order <" + randomWastedOrder.getId() + "> from the shelf <"
                 + this.overflowShelfKey + ">");
     }
 
-    public OrderManagerImpl(Map<String, ShelfInfo> shelfInfos) throws Exception {
+    public OrderManagerImpl(Map<String, ShelfInfo> shelfInfos, int movingOrderTimeOut) throws Exception {
         super();
         this.shelfInfos = shelfInfos;
         this.ordersInShelves = new ConcurrentHashMap<String, Map<String, CookedOrder>>();
@@ -224,39 +207,36 @@ public class OrderManagerImpl implements OrderManager {
         }
         this.deliveredOrders = new Vector<CookedOrder>();
         this.wastedOrders = new Vector<CookedOrder>();
+        this.movingOrderTimeOut = movingOrderTimeOut;
     }
 
     private void displayAllOrderStatus(String event) {
-        synchronized (ordersInShelves) {
-            System.out.println("-------------------------Start--------------------------------");
-            System.out.println("Event: " + event);
-            synchronized (this.deliveredOrders) {
-                synchronized (this.deliveredOrders) {
-                    for (String key : ordersInShelves.keySet()) {
-                        System.out.println(key + ": " + ordersInShelves.get(key).size());
-                        Map<String, CookedOrder> singleTempShelf = ordersInShelves.get(key);
-                        for (String orderId : singleTempShelf.keySet()) {
-                            CookedOrder cookedOrder = singleTempShelf.get(orderId);
-                            System.out.println("<" + cookedOrder.getId() + ",Value:" + cookedOrder.getCurrentValue()
-                                    + ",In the Shelf:" + cookedOrder.getShelfInfo().getAllowableTemperature() + ">  ");
-                        }
-                    }
-
-                    System.out.println("Delivered: " + deliveredOrders.size());
-                    for (CookedOrder cookedOrder : deliveredOrders) {
-                        System.out.println("<" + cookedOrder.getId() + ",Value:" + cookedOrder.getFinalValue()
-                                + ",Out of the Shelf:" + cookedOrder.getShelfInfo().getAllowableTemperature() + ">  ");
-                    }
-
-                    System.out.println("Wasted: " + wastedOrders.size() + " ");
-                    for (CookedOrder cookedOrder : wastedOrders) {
-                        System.out.println("<" + cookedOrder.getId() + ",Value:" + cookedOrder.getFinalValue()
-                                + ",Out of the Shelf:" + cookedOrder.getShelfInfo().getAllowableTemperature() + ">  ");
-                    }
-                    System.out.println("--------------------------End-------------------------------");
-                    System.out.println();
+        synchronized (this) {
+            log.debug("-------------------------Start--------------------------------");
+            log.debug("Event: " + event);
+            for (String key : ordersInShelves.keySet()) {
+                log.debug(key + ": " + ordersInShelves.get(key).size());
+                Map<String, CookedOrder> singleTempShelf = ordersInShelves.get(key);
+                for (String orderId : singleTempShelf.keySet()) {
+                    CookedOrder cookedOrder = singleTempShelf.get(orderId);
+                    log.debug("<" + cookedOrder.getId() + ",Value:" + cookedOrder.getCurrentValue() + ",In the Shelf:"
+                            + cookedOrder.getShelfInfo().getAllowableTemperature() + ">  ");
                 }
             }
+
+            log.debug("Delivered: " + deliveredOrders.size());
+            for (CookedOrder cookedOrder : deliveredOrders) {
+                log.debug("<" + cookedOrder.getId() + ",Value:" + cookedOrder.getFinalValue() + ",From Shelf:"
+                        + cookedOrder.getShelfInfo().getAllowableTemperature() + ">  ");
+            }
+
+            log.debug("Wasted: " + wastedOrders.size() + " ");
+            for (CookedOrder cookedOrder : wastedOrders) {
+                log.debug("<" + cookedOrder.getId() + ",Value:" + cookedOrder.getFinalValue() + ",From Shelf:"
+                        + cookedOrder.getShelfInfo().getAllowableTemperature() + ">  ");
+            }
+            log.debug("--------------------------End-------------------------------");
+            log.debug("");
         }
     }
 
@@ -274,6 +254,44 @@ public class OrderManagerImpl implements OrderManager {
 
     public void discardOrder(CookedOrder wastedOrder) {
         this.wastedOrders.add(wastedOrder);
+    }
+
+    private String getSelectedIndex() {
+        String selectedIndex = null;
+        byte[] inputData = new byte[2];
+        int readLength = 0;
+        try {
+            readLength = readInputStreamWithTimeout(System.in, inputData, this.movingOrderTimeOut * 1000);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (readLength > 0 && readLength <= inputData.length) {
+            StringBuffer sb = new StringBuffer();
+            for (int i = 0; i < inputData.length; i++) {
+                sb.append((char) (inputData[i]));
+            }
+            selectedIndex = sb.toString().replaceAll("\r|\n", "");
+        }
+        return selectedIndex;
+    }
+
+    private int readInputStreamWithTimeout(InputStream is, byte[] buf, int timeoutMillis) throws IOException {
+        int bufferOffset = 0; // bufferoffset
+        long maxTimeMillis = System.currentTimeMillis() + timeoutMillis;// max time out
+
+        while (System.currentTimeMillis() < maxTimeMillis && bufferOffset < buf.length) { // time up, buffer is full or
+                                                                                          // get System in
+            int readLength = Math.min(is.available(), buf.length - bufferOffset); // select buffer length
+            int readResult = is.read(buf, bufferOffset, readLength);
+            if (readResult == -1) { // input stream is end then break
+                break;
+            }
+            bufferOffset += readResult;
+            if (readResult > 0) { // get the content end, break;
+                break;
+            }
+        }
+        return bufferOffset;
     }
 
 }

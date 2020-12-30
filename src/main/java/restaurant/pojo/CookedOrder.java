@@ -1,6 +1,8 @@
-package restaurant;
+package restaurant.pojo;
 
 import java.math.BigDecimal;
+
+import restaurante.constants.OrderStatus;
 
 /*
  * This object hold the order information, including before/after cooked information.

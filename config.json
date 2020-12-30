@@ -1,0 +1,11 @@
+{
+    "order": {
+        "one_time_receive": 10,
+        "pause_between_receive": 1
+    },
+    "courier": {
+        "wait_min": 30,
+        "wait_max": 100
+    },
+    "moving_order_time_out": 20
+}

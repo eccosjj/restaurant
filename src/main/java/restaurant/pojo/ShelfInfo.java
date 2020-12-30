@@ -1,4 +1,4 @@
-package restaurant;
+package restaurant.pojo;
 
 /*
  * The Shelf pojo.
