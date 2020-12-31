@@ -2,6 +2,7 @@ package restaurant.pojo;
 
 import java.math.BigDecimal;
 
+import restaurante.constants.DiscardReason;
 import restaurante.constants.OrderStatus;
 
 /*
@@ -16,12 +17,20 @@ public class CookedOrder {
     private float decayRate;
     // deliveredValue marked the order value when this order is delivered or
     // discarded.
-    private float finalValue;
+    private Float finalValue;
     // orderedTimestamp store the timestamp when this order is put into the shelf.
     private long orderedTimestamp;
     // store the shelfInfo info, it's changing when put different Shelf.
     private ShelfInfo shelfInfo;
     private OrderStatus orderStatus;
+    private DiscardReason discardReason;
+
+    @Override
+    public String toString() {
+        return "CookedOrder [id=" + id + ", temp=" + temp + ", orderStatus=" + orderStatus + ", discardReason="
+                + discardReason + ", getCurrentValue()=" + getCurrentValue() + ", Shelf=" + getShelfInfo().getName()
+                + "]";
+    }
 
     public String getId() {
         return id;
@@ -66,17 +75,11 @@ public class CookedOrder {
     // return the order value, order value is keep being lower since the OrderAge is
     // growing.
     public float getCurrentValue() {
+        if (this.finalValue != null)
+            return this.finalValue;
         float orderAge = this.getOrderAge();
         return (this.shelfLife - orderAge - (this.decayRate * orderAge * this.shelfInfo.getShelfDecayModifier()))
                 / this.shelfLife;
-    }
-
-    @Override
-    public String toString() {
-        return "CookedOrder [id=" + id + ", name=" + name + ", temp=" + temp + ", shelfLife=" + shelfLife
-                + ", decayRate=" + decayRate + ", finalValue=" + finalValue + ", orderedTimestamp=" + orderedTimestamp
-                + ", shelfInfo=" + shelfInfo + ", orderStatus=" + orderStatus + ", getCurrentValue()="
-                + getCurrentValue() + "]";
     }
 
     public CookedOrder(String id, String name, String temp, float shelfLife, float decayRate, float finalValue,
@@ -90,6 +93,14 @@ public class CookedOrder {
         this.finalValue = finalValue;
         this.orderedTimestamp = orderedTimestamp;
         this.shelfInfo = shelfInfo;
+    }
+
+    public DiscardReason getDiscardReason() {
+        return discardReason;
+    }
+
+    public void setDiscardReason(DiscardReason discardReason) {
+        this.discardReason = discardReason;
     }
 
     public ShelfInfo getShelfInfo() {
@@ -115,7 +126,7 @@ public class CookedOrder {
         this.orderedTimestamp = System.currentTimeMillis();
     }
 
-    public float getFinalValue() {
+    public Float getFinalValue() {
         return finalValue;
     }
 

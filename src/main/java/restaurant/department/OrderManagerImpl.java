@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 
 import restaurant.pojo.CookedOrder;
 import restaurant.pojo.ShelfInfo;
+import restaurante.constants.DiscardReason;
 import restaurante.constants.OrderStatus;
 
 public class OrderManagerImpl implements OrderManager {
@@ -32,10 +33,11 @@ public class OrderManagerImpl implements OrderManager {
             singleTempShelf.remove(orderId);
             returnOrder.setFinalValue();
             if (returnOrder.getFinalValue() < 0) {
-                returnOrder.setOrderStatus(OrderStatus.Delivered);
+                returnOrder.setOrderStatus(OrderStatus.Wasted);
+                returnOrder.setDiscardReason(DiscardReason.ValueIsBelowZero);
                 this.wastedOrders.add(returnOrder);
             } else {
-                returnOrder.setOrderStatus(OrderStatus.Wasted);
+                returnOrder.setOrderStatus(OrderStatus.Delivered);
                 this.deliveredOrders.add(returnOrder);
             }
             // this.displayAllOrderStatus();
@@ -64,9 +66,10 @@ public class OrderManagerImpl implements OrderManager {
                 // cookedOrder.setOrderedTimestamp();
                 singleTempShelf.put(cookedOrder.getId(), cookedOrder);
                 if (currentOrderStatus.equals(OrderStatus.InTheShelf)) {
-                    log.info("Successfully move the order <" + cookedOrder.getId() + "> to the " + shelfInfo.getName());
+                    log.info("Successfully move the order " + cookedOrder.getId() + " to the " + shelfInfo.getName());
+                } else {
+                    log.trace("Successfully put the order " + cookedOrder.getId() + " to the " + shelfInfo.getName());
                 }
-                log.trace("Successfully put the order <" + cookedOrder.getId() + "> to the " + shelfInfo.getName());
                 return true;
             } else {
                 return false;
@@ -131,8 +134,8 @@ public class OrderManagerImpl implements OrderManager {
                         if (putSuccess) {
                             singleTempShelf.remove(selectedOrder.getId());
                         } else {
-                            log.info("No shelf has rooms now, failed to move order <" + selectedOrder.getId()
-                                    + ">, the system will randomly discard an order from the "
+                            log.info("No shelf has rooms now, failed to move order " + selectedOrder.getId()
+                                    + ", the system will randomly discard an order from the "
                                     + overflowShelfInfo.getName());
                             randomWastedOrder(singleTempShelf, overflowShelfInfo);
                         }
@@ -160,11 +163,10 @@ public class OrderManagerImpl implements OrderManager {
         CookedOrder randomWastedOrder = (CookedOrder) values[generator.nextInt(values.length)];
         singleTempShelf.values().remove(randomWastedOrder);
         randomWastedOrder.setOrderStatus(OrderStatus.Wasted);
+        randomWastedOrder.setDiscardReason(DiscardReason.RandomlyChoose);
         randomWastedOrder.setFinalValue();
         this.wastedOrders.add(randomWastedOrder);
-        log.info(
-                "Random discard the order <" + randomWastedOrder.getId() + "> from the " + overflowShelfInfo.getName());
-        this.displayAllOrderStatus();
+        log.info("Random discard the order " + randomWastedOrder.getId() + " from the " + overflowShelfInfo.getName());
     }
 
     public OrderManagerImpl(Map<String, ShelfInfo> shelfInfos, int movingOrderTimeOut) throws Exception {
@@ -186,8 +188,7 @@ public class OrderManagerImpl implements OrderManager {
         this.movingOrderTimeOut = movingOrderTimeOut;
     }
 
-    // private synchronized void displayAllOrderStatus(String event) {
-    private synchronized void displayAllOrderStatus() {
+    public void displayAllOrderStatus() {
         log.debug("-------------------------Start--------------------------------");
         // log.debug("Event: " + event);
         for (String key : ordersInShelves.keySet()) {
@@ -197,8 +198,12 @@ public class OrderManagerImpl implements OrderManager {
             Map<String, CookedOrder> singleTempShelf = ordersInShelves.get(key);
             for (String orderId : singleTempShelf.keySet()) {
                 CookedOrder cookedOrder = singleTempShelf.get(orderId);
-                log.debug("<" + cookedOrder.getId() + ",Value:" + cookedOrder.getCurrentValue() + ",In the:"
-                        + cookedOrder.getShelfInfo().getName() + ">  ");
+                // log.debug("<" + cookedOrder.getId() + ">,<OrderStatus:" +
+                // cookedOrder.getOrderStatus().toString()
+                // + ">,<Value:" + cookedOrder.getCurrentValue() + ">,<Temp:" +
+                // cookedOrder.getTemp()
+                // + ">,<In the:" + cookedOrder.getShelfInfo().getName() + "> ");
+                log.debug(cookedOrder.toString());
 
             }
         }
@@ -206,15 +211,23 @@ public class OrderManagerImpl implements OrderManager {
             log.debug("Delivered: " + deliveredOrders.size());
 
             for (CookedOrder cookedOrder : deliveredOrders) {
-                log.debug("<" + cookedOrder.getId() + ",Value:" + cookedOrder.getFinalValue() + ",From:"
-                        + cookedOrder.getShelfInfo().getName() + ">  ");
+                // log.debug("<" + cookedOrder.getId() + ">,<OrderStatus:" +
+                // cookedOrder.getOrderStatus().toString()
+                // + ">,<Value:" + cookedOrder.getFinalValue() + ">,<Temp:" +
+                // cookedOrder.getTemp() + ">,<From:"
+                // + cookedOrder.getShelfInfo().getName() + "> ");
+                log.debug(cookedOrder.toString());
             }
         }
         synchronized (wastedOrders) {
             log.debug("Wasted: " + wastedOrders.size() + " ");
             for (CookedOrder cookedOrder : wastedOrders) {
-                log.debug("<" + cookedOrder.getId() + ",Value:" + cookedOrder.getFinalValue() + ",From:"
-                        + cookedOrder.getShelfInfo().getName() + ">  ");
+                // log.debug("<" + cookedOrder.getId() + ">,<OrderStatus:" +
+                // cookedOrder.getOrderStatus().toString()
+                // + ">,<Value:" + cookedOrder.getFinalValue() + ">,<Temp:" +
+                // cookedOrder.getTemp() + ">,<From:"
+                // + cookedOrder.getShelfInfo().getName() + "> ");
+                log.debug(cookedOrder.toString());
             }
         }
         log.debug("--------------------------End-------------------------------");

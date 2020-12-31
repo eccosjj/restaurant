@@ -16,4 +16,6 @@ public interface OrderManager {
 
     Map<String, ShelfInfo> getShelfInfos();
 
+    void displayAllOrderStatus();
+
 }

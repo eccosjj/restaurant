@@ -21,10 +21,10 @@ public class Kitchen extends Thread {
     }
 
     public void run() {
-        log.trace("The kitchen receive the order:" + cookedOrder.getId());
+        log.trace("The kitchen" + Thread.currentThread().getId() + " receive the order:" + cookedOrder.getId());
         cookedOrder.setOrderStatus(OrderStatus.Cooked);
         cookedOrder.setOrderedTimestamp();
-        log.trace("The kitchen cooked the order:" + cookedOrder.getId());
+        log.trace("The kitchen" + Thread.currentThread().getId() + " cooked the order:" + cookedOrder.getId());
         boolean putIntoShelf = false;
         while (!putIntoShelf) {
             ShelfInfo shelfInfo = this.orderManager.getShelfInfos().get(cookedOrder.getTemp());
@@ -33,23 +33,26 @@ public class Kitchen extends Thread {
             switch (cookedOrder.getOrderStatus()) {
             case Cooked:
                 cookedOrder.setOrderStatus(OrderStatus.tryPutIntoSpecificShelf);
-                log.trace("Try to put the order:" + cookedOrder.getId() + " into " + shelfInfo.getName());
+                log.trace("The kitchen" + Thread.currentThread().getId() + " try to put the order:"
+                        + cookedOrder.getId() + " into " + shelfInfo.getName());
                 putIntoShelf = this.orderManager.putIntoShelf(cookedOrder, cookedOrder.getTemp());
                 break;
             case tryPutIntoSpecificShelf:
-                log.trace("Failed to put the order:" + cookedOrder.getId() + " into " + shelfInfo.getName()
-                        + ", now try to put it into " + overflowShelfInfo.getName());
+                log.trace("The kitchen" + Thread.currentThread().getId() + " is failed to put the order:"
+                        + cookedOrder.getId() + " into " + shelfInfo.getName() + ", now try to put it into "
+                        + overflowShelfInfo.getName());
                 cookedOrder.setOrderStatus(OrderStatus.TryPutIntoOverFlowShelf);
                 putIntoShelf = this.orderManager.putIntoShelf(cookedOrder, this.orderManager.getOverflowShelfKey());
                 break;
             default:
-                log.trace("Failed to put the order:" + cookedOrder.getId() + "into " + overflowShelfInfo.getName());
+                log.trace("The kitchen" + Thread.currentThread().getId() + " is failed to put the order:"
+                        + cookedOrder.getId() + " into " + overflowShelfInfo.getName());
                 putIntoShelf = this.orderManager.moveOutOrderFromOverFlow(cookedOrder);
                 break;
             }
         }
-        log.trace("The kitchen put the order:" + cookedOrder.getId() + " into "
-                + cookedOrder.getShelfInfo().getAllowableTemperature() + "shelf and call the courier");
+        log.trace("The kitchen put the order:" + cookedOrder.getId() + " into " + cookedOrder.getShelfInfo().getName()
+                + " and call the courier");
         this.restaurant.notifyCourier(cookedOrder);
 
     }

@@ -1,9 +1,11 @@
 package restaurant;
 
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CountDownLatch;
 
 import org.apache.log4j.Logger;
 
@@ -13,6 +15,7 @@ import com.google.gson.reflect.TypeToken;
 
 import restaurant.department.Courier;
 import restaurant.department.Kitchen;
+import restaurant.department.Monitor;
 import restaurant.department.OrderManager;
 import restaurant.department.OrderManagerImpl;
 import restaurant.pojo.CookedOrder;
@@ -31,94 +34,115 @@ public class Restaurant {
     private int pauseBetweenReceive;
     private int waitMin;
     private int waitMax;
+    private CountDownLatch courierCountDownLatch;
+    public static boolean Restaurant_Is_Openning = true;
+    private Monitor monitor;
 
     public Restaurant() {
-        Gson gson = new Gson();
-        // load order.json file to List<CookedOrder> collections
-        String content = readContentString(this.orderConfig);
-        this.orders = (List<CookedOrder>) gson.fromJson(content, new TypeToken<List<CookedOrder>>() {
-        }.getType());
-
-        // load shelves.json file to Map<String, ShelfInfo> collections
-        content = readContentString(this.shelfConfig);
-        Map<String, ShelfInfo> shelfInfos = (Map<String, ShelfInfo>) gson.fromJson(content,
-                new TypeToken<Map<String, ShelfInfo>>() {
-                }.getType());
-
-        // load config.json file which holde the normal configurations
-        content = readContentString(this.config);
-        this.configJsonObject = new Gson().fromJson(content, JsonObject.class);
-
-        JsonObject orderJsonObject = this.configJsonObject.get("order").getAsJsonObject();
-        this.oneTimeReceive = orderJsonObject.get("one_time_receive").getAsInt();
-        this.pauseBetweenReceive = orderJsonObject.get("pause_between_receive").getAsInt();
-        if (this.oneTimeReceive == 0) {
-            log.error("one_time_receive can not be 0, please modify config.json.");
-            System.exit(1);
-        }
-        if (this.pauseBetweenReceive < 0) {
-            log.error("pause_between_receive can not be lower than 0, please modify config.json.");
-            System.exit(1);
-        }
-        JsonObject courierJsonObject = this.configJsonObject.get("courier").getAsJsonObject();
-        this.waitMin = courierJsonObject.get("wait_min").getAsInt();
-        this.waitMax = courierJsonObject.get("wait_max").getAsInt();
-        if (this.waitMin < 0 || this.waitMax < 0) {
-            log.error("Nether wait_min nor wait_max can be lower than 0, please modify config.json.");
-            System.exit(1);
-        }
-        if (this.waitMin > this.waitMax) {
-            log.error("wait_max must greater wait_min, please modify config.json.");
-            System.exit(1);
-        }
-
         try {
+            Gson gson = new Gson();
+            // load order.json file to List<CookedOrder> collections
+            String content = readContentString(this.orderConfig);
+            this.orders = (List<CookedOrder>) gson.fromJson(content, new TypeToken<List<CookedOrder>>() {
+            }.getType());
+
+            // load shelves.json file to Map<String, ShelfInfo> collections
+            content = readContentString(this.shelfConfig);
+            Map<String, ShelfInfo> shelfInfos = (Map<String, ShelfInfo>) gson.fromJson(content,
+                    new TypeToken<Map<String, ShelfInfo>>() {
+                    }.getType());
+
+            // load config.json file which holde the normal configurations
+            content = readContentString(this.config);
+            this.configJsonObject = new Gson().fromJson(content, JsonObject.class);
+
+            JsonObject orderJsonObject = this.configJsonObject.get("order").getAsJsonObject();
+            this.oneTimeReceive = orderJsonObject.get("one_time_receive").getAsInt();
+            this.pauseBetweenReceive = orderJsonObject.get("receive_interval").getAsInt();
+            if (this.oneTimeReceive == 0) {
+                log.error("one_time_receive can not be 0, please modify config.json.");
+                System.exit(1);
+            }
+            if (this.pauseBetweenReceive < 0) {
+                log.error("receive_interval can not be lower than 0, please modify config.json.");
+                System.exit(1);
+            }
+            JsonObject courierJsonObject = this.configJsonObject.get("courier").getAsJsonObject();
+            this.waitMin = courierJsonObject.get("wait_min").getAsInt();
+            this.waitMax = courierJsonObject.get("wait_max").getAsInt();
+            if (this.waitMin < 0 || this.waitMax < 0) {
+                log.error("Nether wait_min nor wait_max can be lower than 0, please modify config.json.");
+                System.exit(1);
+            }
+            if (this.waitMin > this.waitMax) {
+                log.error("wait_max must greater than wait_min, please modify config.json.");
+                System.exit(1);
+            }
             this.orderManager = new OrderManagerImpl(shelfInfos,
                     this.configJsonObject.get("moving_order_time_out").getAsInt());
+            JsonObject monitorJsonObject = this.configJsonObject.get("monitor").getAsJsonObject();
+            if (monitorJsonObject.get("work").getAsBoolean()) {
+                int workInterval = monitorJsonObject.get("work_interval").getAsInt();
+                if (workInterval <= 0) {
+                    log.error("work_interval must greater than 0, please modify config.json.");
+                    System.exit(1);
+                }
+                this.monitor = new Monitor(this.orderManager, workInterval);
+            }
         } catch (Exception e) {
-            log.error(e.getMessage());
+            e.printStackTrace();
             System.exit(1);
-
         }
 
     }
 
-    private static String readContentString(String filePath) {
-        FileInputStream in = null;
-        Long shelfConfigLength = null;
-        byte[] fileContent = null;
+    private String readContentString(String filePath) throws Exception {
+        InputStream in = null;
+        BufferedReader br = null;
+        StringBuilder sb = new StringBuilder();
         try {
-            File shelfConfig = new File(filePath);
-            shelfConfigLength = shelfConfig.length();
-            fileContent = new byte[shelfConfigLength.intValue()];
-            in = new FileInputStream(shelfConfig);
-            in.read(fileContent);
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.exit(1);
+            in = this.getClass().getClassLoader().getResource(filePath).openStream();
+            br = new BufferedReader(new InputStreamReader(in));
+            String line = "";
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+            }
         } finally {
             try {
-                in.close();
+                if (br != null)
+                    br.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
+                if (in != null)
+                    in.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        return new String(fileContent);
+        return sb.toString();
+
     }
 
     public static void main(String[] args) {
-        log.trace("The restaurant starts serving the orders.");
+        log.info("The restaurant starts serving the orders.");
         Restaurant restaurant = new Restaurant();
         try {
             restaurant.startService();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        log.trace("All orders served, the restaurant is closed.");
+        Restaurant_Is_Openning = false;
+        log.info("All orders served, the restaurant is closed.");
     }
 
     private void startService() throws Exception {
+        if (this.monitor != null) {
+            this.monitor.start();
+        }
         int receiveOrderCount = 0;
+        courierCountDownLatch = new CountDownLatch(orders.size());
         for (CookedOrder order : orders) {
             new Kitchen(this, this.orderManager, order).start();
             receiveOrderCount++;
@@ -130,10 +154,11 @@ public class Restaurant {
                 }
             }
         }
+        this.courierCountDownLatch.await();
     }
 
     public void notifyCourier(CookedOrder cookedOrder) {
-        new Courier(cookedOrder, this.orderManager, this.waitMin, this.waitMax).start();
+        new Courier(cookedOrder, this.orderManager, this.waitMin, this.waitMax, this.courierCountDownLatch).start();
     }
 
 }
