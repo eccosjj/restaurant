@@ -9,6 +9,13 @@ import org.apache.log4j.Logger;
 import restaurant.pojo.CookedOrder;
 import restaurant.pojo.ShelfInfo;
 
+/**
+ * the order manager object, hold the all order's info, including all shelf's
+ * content, wasted order list and delivery order list
+ * 
+ * @author junjiesun
+ *
+ */
 public class OrderManagerImpl implements OrderManager {
     static Logger log = Logger.getLogger(OrderManagerImpl.class);
     private Map<String, Map<String, CookedOrder>> ordersInShelves;
@@ -17,6 +24,13 @@ public class OrderManagerImpl implements OrderManager {
     private Vector<CookedOrder> wastedOrders;
     private String overflowShelfKey;
 
+    /**
+     * construct, initialize the all shelfs info, wasted and delivery list, throw
+     * exception when didn't find the overflow shelf
+     * 
+     * @param shelfInfos
+     * @throws Exception
+     */
     public OrderManagerImpl(Map<String, ShelfInfo> shelfInfos) throws Exception {
         super();
         this.shelfInfos = shelfInfos;
@@ -35,6 +49,13 @@ public class OrderManagerImpl implements OrderManager {
         this.wastedOrders = new Vector<CookedOrder>();
     }
 
+    /**
+     * synchronized method, print current snapshot of order, including all shelf's
+     * content, wasted order list and delivery order list
+     * 
+     * @param event
+     *            an log event
+     */
     public synchronized void takeCurrentSnapshot(String event) {
         log.trace(event);
         log.debug("-------------------------Start--------------------------------");

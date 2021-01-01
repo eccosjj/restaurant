@@ -1,0 +1,369 @@
+2021-01-02 01:28:18 906  [ pool-1-thread-1:40165 ] - [ TRACE ]  The kitchen 16 receive and cooked the order:a8cfcb76-7f24-4420-a5ba-d46dd77bdffd try to put into Frozen shelf
+2021-01-02 01:28:18 918  [ pool-1-thread-2:40177 ] - [ TRACE ]  The kitchen 17 receive and cooked the order:58e9b5fe-3fde-4a27-8e98-682e58a4a65d try to put into Frozen shelf
+2021-01-02 01:28:18 921  [ pool-1-thread-10:40180 ] - [ TRACE ]  The kitchen 25 receive and cooked the order:74e0893f-8544-4298-b507-9cf5ab847d83 try to put into Hot shelf
+2021-01-02 01:28:18 922  [ pool-1-thread-9:40181 ] - [ TRACE ]  The kitchen 24 receive and cooked the order:0a6537d7-9568-400e-9857-7aceb4e7347c try to put into Frozen shelf
+2021-01-02 01:28:18 924  [ pool-1-thread-8:40183 ] - [ TRACE ]  The kitchen 23 receive and cooked the order:4cc9d503-4e0e-42a3-b200-87c785468df9 try to put into Cold shelf
+2021-01-02 01:28:18 925  [ pool-1-thread-7:40184 ] - [ TRACE ]  The kitchen 22 receive and cooked the order:66a2611c-9a93-4ccd-bb85-98f423247bf9 try to put into Cold shelf
+2021-01-02 01:28:18 926  [ pool-1-thread-6:40185 ] - [ TRACE ]  The kitchen 21 receive and cooked the order:c18e1242-0856-4203-a98c-7066ead3bd6b try to put into Cold shelf
+2021-01-02 01:28:18 927  [ pool-1-thread-5:40186 ] - [ TRACE ]  The kitchen 20 receive and cooked the order:972aa5b8-5d83-4d5e-8cf3-8a1a1437b18a try to put into Frozen shelf
+2021-01-02 01:28:18 928  [ pool-1-thread-4:40187 ] - [ TRACE ]  The kitchen 19 receive and cooked the order:690b85f7-8c7d-4337-bd02-04e04454c826 try to put into Cold shelf
+2021-01-02 01:28:18 937  [ pool-1-thread-3:40196 ] - [ TRACE ]  The kitchen 18 receive and cooked the order:2ec069e3-576f-48eb-869f-74a540ef840c try to put into Cold shelf
+2021-01-02 01:28:19 926  [ pool-1-thread-11:41185 ] - [ TRACE ]  The kitchen 26 receive and cooked the order:7a5ea4ed-e378-4354-8ab3-a09cf563f621 try to put into Frozen shelf
+2021-01-02 01:28:19 927  [ pool-1-thread-16:41186 ] - [ TRACE ]  The kitchen 31 receive and cooked the order:2bfc7ca9-d8ea-4625-9a03-6aa4b5fb635e try to put into Hot shelf
+2021-01-02 01:28:19 929  [ pool-1-thread-15:41188 ] - [ TRACE ]  The kitchen 30 receive and cooked the order:e868e485-c759-411b-b439-ca7086326bf6 try to put into Hot shelf
+2021-01-02 01:28:19 930  [ pool-1-thread-14:41189 ] - [ TRACE ]  The kitchen 29 receive and cooked the order:d4ead98f-a158-429c-9c0d-28ab0fa830a6 try to put into Hot shelf
+2021-01-02 01:28:19 931  [ pool-1-thread-13:41190 ] - [ TRACE ]  The kitchen 28 receive and cooked the order:2e7f4153-92cb-43e2-96f4-d77e2f25422b try to put into Cold shelf
+2021-01-02 01:28:19 932  [ pool-1-thread-12:41191 ] - [ TRACE ]  The kitchen 27 receive and cooked the order:60fbe431-7f7f-46c5-8ecf-6a26ae898685 try to put into Hot shelf
+2021-01-02 01:28:19 932  [ pool-1-thread-20:41191 ] - [ TRACE ]  The kitchen 35 receive and cooked the order:916ddba3-9c25-4065-8a90-ecf5c40c8394 try to put into Frozen shelf
+2021-01-02 01:28:19 933  [ pool-1-thread-19:41192 ] - [ TRACE ]  The kitchen 34 receive and cooked the order:6d2c9eb3-6ff8-408a-a60d-e60eaa467dae try to put into Cold shelf
+2021-01-02 01:28:19 934  [ pool-1-thread-18:41193 ] - [ TRACE ]  The kitchen 33 receive and cooked the order:a9f8f42f-7a58-4629-8b66-1acbf362f3b8 try to put into Cold shelf
+2021-01-02 01:28:19 936  [ pool-1-thread-17:41195 ] - [ TRACE ]  The kitchen 32 receive and cooked the order:1a4d0e6d-e50e-4ec0-ad5d-0f33e6a724e6 try to put into Cold shelf
+2021-01-02 01:28:20 929  [ pool-1-thread-21:42188 ] - [ TRACE ]  The kitchen 36 receive and cooked the order:23f5cb3a-fa51-49ad-9e29-83e98d6e7d6f try to put into Frozen shelf
+2021-01-02 01:28:20 930  [ pool-1-thread-25:42189 ] - [ TRACE ]  The kitchen 40 receive and cooked the order:53f012e3-da55-4314-b2e6-28e63f0418ad try to put into Cold shelf
+2021-01-02 01:28:20 931  [ pool-1-thread-24:42190 ] - [ TRACE ]  The kitchen 39 receive and cooked the order:ed05dafe-d928-4f1a-856d-1dab3868acbd try to put into Hot shelf
+2021-01-02 01:28:20 932  [ pool-1-thread-23:42191 ] - [ TRACE ]  The kitchen 38 receive and cooked the order:cf0932a9-533c-4603-bb1e-512c6e697b92 try to put into Hot shelf
+2021-01-02 01:28:20 933  [ pool-1-thread-22:42192 ] - [ TRACE ]  The kitchen 37 receive and cooked the order:c700ab30-d7bd-4e45-aafb-4329876c716c try to put into Hot shelf
+2021-01-02 01:28:20 934  [ pool-1-thread-30:42193 ] - [ TRACE ]  The kitchen 45 receive and cooked the order:614e4f4d-b2f4-4b60-9421-238f61affe20 try to put into Frozen shelf
+2021-01-02 01:28:20 935  [ pool-1-thread-29:42194 ] - [ TRACE ]  The kitchen 44 receive and cooked the order:dcafe7ca-f7a7-4262-9b14-ab19729b2055 try to put into Hot shelf
+2021-01-02 01:28:20 935  [ pool-1-thread-28:42194 ] - [ TRACE ]  The kitchen 43 receive and cooked the order:f7074980-3424-43d4-9166-f495077a273e try to put into Cold shelf
+2021-01-02 01:28:20 936  [ pool-1-thread-27:42195 ] - [ TRACE ]  The kitchen 42 receive and cooked the order:f84d8263-7aae-4254-85b7-27865ffd76b7 try to put into Cold shelf
+2021-01-02 01:28:20 937  [ pool-1-thread-26:42196 ] - [ TRACE ]  The kitchen 41 receive and cooked the order:5dd79771-4536-4eaa-b64c-63ac606f1357 try to put into Hot shelf
+2021-01-02 01:28:21 934  [ pool-1-thread-31:43193 ] - [ TRACE ]  The kitchen 46 receive and cooked the order:d2d2d948-f019-4806-bb7e-bb2172bd75d9 try to put into Hot shelf
+2021-01-02 01:28:21 934  [ pool-1-thread-32:43193 ] - [ TRACE ]  The kitchen 47 receive and cooked the order:8275f014-ed83-4554-b0ff-0dbdc24e57ad try to put into Hot shelf
+2021-01-02 01:28:21 935  [ pool-1-thread-31:43194 ] - [ TRACE ]  The kitchen 46successfully put the order d2d2d948-f019-4806-bb7e-bb2172bd75d9 to the Hot shelf
+2021-01-02 01:28:21 936  [ pool-1-thread-38:43195 ] - [ TRACE ]  The kitchen 53 receive and cooked the order:9748651e-c3f8-4c4a-9de9-5360467c86a2 try to put into Hot shelf
+2021-01-02 01:28:21 936  [ pool-1-thread-32:43195 ] - [ TRACE ]  The kitchen 47successfully put the order 8275f014-ed83-4554-b0ff-0dbdc24e57ad to the Hot shelf
+2021-01-02 01:28:21 937  [ pool-1-thread-38:43196 ] - [ TRACE ]  The kitchen 53successfully put the order 9748651e-c3f8-4c4a-9de9-5360467c86a2 to the Hot shelf
+2021-01-02 01:28:21 937  [ pool-1-thread-37:43196 ] - [ TRACE ]  The kitchen 52 receive and cooked the order:51c5017b-f812-40ac-8d68-87aab3fbab6a try to put into Frozen shelf
+2021-01-02 01:28:21 938  [ pool-1-thread-37:43197 ] - [ TRACE ]  The kitchen 52successfully put the order 51c5017b-f812-40ac-8d68-87aab3fbab6a to the Frozen shelf
+2021-01-02 01:28:21 938  [ pool-1-thread-36:43197 ] - [ TRACE ]  The kitchen 51 receive and cooked the order:1b56ee15-70e7-443e-96cb-0479e9d46381 try to put into Frozen shelf
+2021-01-02 01:28:21 939  [ pool-1-thread-36:43198 ] - [ TRACE ]  The kitchen 51successfully put the order 1b56ee15-70e7-443e-96cb-0479e9d46381 to the Frozen shelf
+2021-01-02 01:28:21 939  [ pool-1-thread-31:43198 ] - [ TRACE ]  The kitchen 46 put the order:d2d2d948-f019-4806-bb7e-bb2172bd75d9 into Hot shelf and call the courier
+2021-01-02 01:28:21 940  [ pool-1-thread-35:43199 ] - [ TRACE ]  The kitchen 50 receive and cooked the order:3aaccfce-3dbe-4967-a2fb-b6c06b4de61d try to put into Frozen shelf
+2021-01-02 01:28:21 941  [ pool-1-thread-35:43200 ] - [ TRACE ]  The kitchen 50successfully put the order 3aaccfce-3dbe-4967-a2fb-b6c06b4de61d to the Frozen shelf
+2021-01-02 01:28:21 942  [ pool-1-thread-34:43201 ] - [ TRACE ]  The kitchen 49 receive and cooked the order:e537a1b8-1505-49ae-a71e-a3ab80e8b606 try to put into Hot shelf
+2021-01-02 01:28:21 943  [ pool-1-thread-33:43202 ] - [ TRACE ]  The kitchen 48 receive and cooked the order:9687809b-8f4b-4a6f-be3f-6e41e4ced3ed try to put into Frozen shelf
+2021-01-02 01:28:21 943  [ pool-1-thread-34:43202 ] - [ TRACE ]  The kitchen 49successfully put the order e537a1b8-1505-49ae-a71e-a3ab80e8b606 to the Hot shelf
+2021-01-02 01:28:21 947  [ pool-1-thread-33:43206 ] - [ TRACE ]  The kitchen 48successfully put the order 9687809b-8f4b-4a6f-be3f-6e41e4ced3ed to the Frozen shelf
+2021-01-02 01:28:21 947  [ pool-1-thread-33:43206 ] - [ TRACE ]  The kitchen 48 put the order:9687809b-8f4b-4a6f-be3f-6e41e4ced3ed into Frozen shelf and call the courier
+2021-01-02 01:28:21 948  [ pool-1-thread-34:43207 ] - [ TRACE ]  The kitchen 49 put the order:e537a1b8-1505-49ae-a71e-a3ab80e8b606 into Hot shelf and call the courier
+2021-01-02 01:28:21 951  [ pool-1-thread-35:43210 ] - [ TRACE ]  The kitchen 50 put the order:3aaccfce-3dbe-4967-a2fb-b6c06b4de61d into Frozen shelf and call the courier
+2021-01-02 01:28:21 952  [ pool-1-thread-36:43211 ] - [ TRACE ]  The kitchen 51 put the order:1b56ee15-70e7-443e-96cb-0479e9d46381 into Frozen shelf and call the courier
+2021-01-02 01:28:21 954  [ pool-1-thread-37:43213 ] - [ TRACE ]  The kitchen 52 put the order:51c5017b-f812-40ac-8d68-87aab3fbab6a into Frozen shelf and call the courier
+2021-01-02 01:28:21 955  [ pool-1-thread-38:43214 ] - [ TRACE ]  The kitchen 53 put the order:9748651e-c3f8-4c4a-9de9-5360467c86a2 into Hot shelf and call the courier
+2021-01-02 01:28:21 956  [ pool-1-thread-32:43215 ] - [ TRACE ]  The kitchen 47 put the order:8275f014-ed83-4554-b0ff-0dbdc24e57ad into Hot shelf and call the courier
+2021-01-02 01:28:21 957  [ pool-1-thread-40:43216 ] - [ TRACE ]  The kitchen 55 receive and cooked the order:87441694-ff97-4d1b-89e3-c4b0b1fd041e try to put into Frozen shelf
+2021-01-02 01:28:21 958  [ pool-1-thread-39:43217 ] - [ TRACE ]  The kitchen 54 receive and cooked the order:345cfefe-692e-4866-986e-99a18bedbf24 try to put into Hot shelf
+2021-01-02 01:28:21 958  [ pool-1-thread-40:43217 ] - [ TRACE ]  The kitchen 55successfully put the order 87441694-ff97-4d1b-89e3-c4b0b1fd041e to the Frozen shelf
+2021-01-02 01:28:21 960  [ pool-1-thread-40:43219 ] - [ TRACE ]  The kitchen 55 put the order:87441694-ff97-4d1b-89e3-c4b0b1fd041e into Frozen shelf and call the courier
+2021-01-02 01:28:21 960  [ pool-1-thread-39:43219 ] - [ TRACE ]  The kitchen 54successfully put the order 345cfefe-692e-4866-986e-99a18bedbf24 to the Hot shelf
+2021-01-02 01:28:21 961  [ pool-2-thread-8:43220 ] - [ TRACE ]  The courier 71 get noticed to pick the order:8275f014-ed83-4554-b0ff-0dbdc24e57ad from Hot shelf
+2021-01-02 01:28:21 962  [ pool-2-thread-7:43221 ] - [ TRACE ]  The courier 69 get noticed to pick the order:9748651e-c3f8-4c4a-9de9-5360467c86a2 from Hot shelf
+2021-01-02 01:28:21 963  [ pool-2-thread-6:43222 ] - [ TRACE ]  The courier 67 get noticed to pick the order:51c5017b-f812-40ac-8d68-87aab3fbab6a from Frozen shelf
+2021-01-02 01:28:21 964  [ pool-2-thread-5:43223 ] - [ TRACE ]  The courier 65 get noticed to pick the order:1b56ee15-70e7-443e-96cb-0479e9d46381 from Frozen shelf
+2021-01-02 01:28:21 965  [ pool-2-thread-4:43224 ] - [ TRACE ]  The courier 63 get noticed to pick the order:3aaccfce-3dbe-4967-a2fb-b6c06b4de61d from Frozen shelf
+2021-01-02 01:28:21 965  [ pool-2-thread-2:43224 ] - [ TRACE ]  The courier 60 get noticed to pick the order:d2d2d948-f019-4806-bb7e-bb2172bd75d9 from Hot shelf
+2021-01-02 01:28:21 966  [ pool-2-thread-3:43225 ] - [ TRACE ]  The courier 61 get noticed to pick the order:e537a1b8-1505-49ae-a71e-a3ab80e8b606 from Hot shelf
+2021-01-02 01:28:21 967  [ pool-2-thread-1:43226 ] - [ TRACE ]  The courier 59 get noticed to pick the order:9687809b-8f4b-4a6f-be3f-6e41e4ced3ed from Frozen shelf
+2021-01-02 01:28:21 968  [ pool-2-thread-3:43227 ] - [ TRACE ]  The courier 61 will pick the order in :3 seconds
+2021-01-02 01:28:21 968  [ pool-2-thread-2:43227 ] - [ TRACE ]  The courier 60 will pick the order in :3 seconds
+2021-01-02 01:28:21 969  [ pool-2-thread-4:43228 ] - [ TRACE ]  The courier 63 will pick the order in :3 seconds
+2021-01-02 01:28:21 970  [ pool-2-thread-5:43229 ] - [ TRACE ]  The courier 65 will pick the order in :5 seconds
+2021-01-02 01:28:21 971  [ pool-2-thread-6:43230 ] - [ TRACE ]  The courier 67 will pick the order in :5 seconds
+2021-01-02 01:28:21 971  [ pool-2-thread-7:43230 ] - [ TRACE ]  The courier 69 will pick the order in :6 seconds
+2021-01-02 01:28:21 972  [ pool-2-thread-8:43231 ] - [ TRACE ]  The courier 71 will pick the order in :2 seconds
+2021-01-02 01:28:21 973  [ pool-2-thread-9:43232 ] - [ TRACE ]  The courier 73 get noticed to pick the order:87441694-ff97-4d1b-89e3-c4b0b1fd041e from Frozen shelf
+2021-01-02 01:28:21 974  [ pool-1-thread-39:43233 ] - [ TRACE ]  The kitchen 54 put the order:345cfefe-692e-4866-986e-99a18bedbf24 into Hot shelf and call the courier
+2021-01-02 01:28:21 975  [ pool-2-thread-9:43234 ] - [ TRACE ]  The courier 73 will pick the order in :5 seconds
+2021-01-02 01:28:21 976  [ pool-2-thread-1:43235 ] - [ TRACE ]  The courier 59 will pick the order in :5 seconds
+2021-01-02 01:28:21 977  [ pool-2-thread-10:43236 ] - [ TRACE ]  The courier 75 get noticed to pick the order:345cfefe-692e-4866-986e-99a18bedbf24 from Hot shelf
+2021-01-02 01:28:21 978  [ pool-2-thread-10:43237 ] - [ TRACE ]  The courier 75 will pick the order in :2 seconds
+2021-01-02 01:28:22 762  [ pool-1-thread-1:44021 ] - [ TRACE ]  The kitchen 16 is failed to put the order:a8cfcb76-7f24-4420-a5ba-d46dd77bdffd into Frozen shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:22 762  [ pool-1-thread-1:44021 ] - [ TRACE ]  The kitchen 16successfully put the order a8cfcb76-7f24-4420-a5ba-d46dd77bdffd to the Overflow shelf
+2021-01-02 01:28:22 762  [ pool-1-thread-1:44021 ] - [ TRACE ]  The kitchen 16 put the order:a8cfcb76-7f24-4420-a5ba-d46dd77bdffd into Overflow shelf and call the courier
+2021-01-02 01:28:22 764  [ pool-2-thread-11:44023 ] - [ TRACE ]  The courier 77 get noticed to pick the order:a8cfcb76-7f24-4420-a5ba-d46dd77bdffd from Overflow shelf
+2021-01-02 01:28:22 765  [ pool-2-thread-11:44024 ] - [ TRACE ]  The courier 77 will pick the order in :5 seconds
+2021-01-02 01:28:22 939  [ pool-1-thread-52:44198 ] - [ TRACE ]  The kitchen 78 receive and cooked the order:3713d8af-e6a0-4c11-966c-f26786dc602c try to put into Frozen shelf
+2021-01-02 01:28:22 941  [ pool-1-thread-52:44200 ] - [ TRACE ]  The kitchen 78 is failed to put the order:3713d8af-e6a0-4c11-966c-f26786dc602c into Frozen shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:22 941  [ pool-1-thread-52:44200 ] - [ TRACE ]  The kitchen 78successfully put the order 3713d8af-e6a0-4c11-966c-f26786dc602c to the Overflow shelf
+2021-01-02 01:28:22 941  [ pool-1-thread-57:44200 ] - [ TRACE ]  The kitchen 83 receive and cooked the order:9df6bbc7-55ee-4f67-8dd1-a9f5ccc56355 try to put into Hot shelf
+2021-01-02 01:28:22 943  [ pool-1-thread-57:44202 ] - [ TRACE ]  The kitchen 83 is failed to put the order:9df6bbc7-55ee-4f67-8dd1-a9f5ccc56355 into Hot shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:22 943  [ pool-1-thread-57:44202 ] - [ TRACE ]  The kitchen 83successfully put the order 9df6bbc7-55ee-4f67-8dd1-a9f5ccc56355 to the Overflow shelf
+2021-01-02 01:28:22 943  [ pool-1-thread-56:44202 ] - [ TRACE ]  The kitchen 82 receive and cooked the order:e09f9282-8e05-48a7-8e6e-e23937383735 try to put into Hot shelf
+2021-01-02 01:28:22 945  [ pool-1-thread-56:44204 ] - [ TRACE ]  The kitchen 82 is failed to put the order:e09f9282-8e05-48a7-8e6e-e23937383735 into Hot shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:22 946  [ pool-1-thread-56:44205 ] - [ TRACE ]  The kitchen 82successfully put the order e09f9282-8e05-48a7-8e6e-e23937383735 to the Overflow shelf
+2021-01-02 01:28:22 945  [ pool-1-thread-55:44204 ] - [ TRACE ]  The kitchen 81 receive and cooked the order:a5697bad-48d4-46fd-b3bc-64ef2485907a try to put into Frozen shelf
+2021-01-02 01:28:22 947  [ pool-1-thread-55:44206 ] - [ TRACE ]  The kitchen 81 is failed to put the order:a5697bad-48d4-46fd-b3bc-64ef2485907a into Frozen shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:22 947  [ pool-1-thread-55:44206 ] - [ TRACE ]  The kitchen 81successfully put the order a5697bad-48d4-46fd-b3bc-64ef2485907a to the Overflow shelf
+2021-01-02 01:28:22 947  [ pool-1-thread-54:44206 ] - [ TRACE ]  The kitchen 80 receive and cooked the order:098604b5-a141-4a5f-a2e3-0b653515cc42 try to put into Hot shelf
+2021-01-02 01:28:22 949  [ pool-1-thread-54:44208 ] - [ TRACE ]  The kitchen 80 is failed to put the order:098604b5-a141-4a5f-a2e3-0b653515cc42 into Hot shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:22 949  [ pool-1-thread-53:44208 ] - [ TRACE ]  The kitchen 79 receive and cooked the order:20343dea-8856-4717-9be9-be1b37d4791f try to put into Hot shelf
+2021-01-02 01:28:22 949  [ pool-1-thread-54:44208 ] - [ TRACE ]  The kitchen 80successfully put the order 098604b5-a141-4a5f-a2e3-0b653515cc42 to the Overflow shelf
+2021-01-02 01:28:22 951  [ pool-1-thread-54:44210 ] - [ TRACE ]  The kitchen 80 put the order:098604b5-a141-4a5f-a2e3-0b653515cc42 into Overflow shelf and call the courier
+2021-01-02 01:28:22 951  [ pool-1-thread-53:44210 ] - [ TRACE ]  The kitchen 79 is failed to put the order:20343dea-8856-4717-9be9-be1b37d4791f into Hot shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:22 951  [ pool-1-thread-53:44210 ] - [ TRACE ]  The kitchen 79successfully put the order 20343dea-8856-4717-9be9-be1b37d4791f to the Overflow shelf
+2021-01-02 01:28:22 953  [ pool-1-thread-55:44212 ] - [ TRACE ]  The kitchen 81 put the order:a5697bad-48d4-46fd-b3bc-64ef2485907a into Overflow shelf and call the courier
+2021-01-02 01:28:22 954  [ pool-1-thread-56:44213 ] - [ TRACE ]  The kitchen 82 put the order:e09f9282-8e05-48a7-8e6e-e23937383735 into Overflow shelf and call the courier
+2021-01-02 01:28:22 955  [ pool-1-thread-57:44214 ] - [ TRACE ]  The kitchen 83 put the order:9df6bbc7-55ee-4f67-8dd1-a9f5ccc56355 into Overflow shelf and call the courier
+2021-01-02 01:28:22 956  [ pool-1-thread-61:44215 ] - [ TRACE ]  The kitchen 87 receive and cooked the order:68515b89-96bf-48b6-a07c-68cf17ca3c25 try to put into Frozen shelf
+2021-01-02 01:28:22 957  [ pool-1-thread-60:44216 ] - [ TRACE ]  The kitchen 86 receive and cooked the order:aba0fc48-ec05-422f-aad4-8b8ec4de636d try to put into Frozen shelf
+2021-01-02 01:28:22 957  [ pool-1-thread-61:44216 ] - [ TRACE ]  The kitchen 87 is failed to put the order:68515b89-96bf-48b6-a07c-68cf17ca3c25 into Frozen shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:22 958  [ pool-1-thread-61:44217 ] - [ TRACE ]  The kitchen 87successfully put the order 68515b89-96bf-48b6-a07c-68cf17ca3c25 to the Overflow shelf
+2021-01-02 01:28:22 959  [ pool-1-thread-59:44218 ] - [ TRACE ]  The kitchen 85 receive and cooked the order:0522c2ec-0242-45e7-8542-f3e98c1384b9 try to put into Hot shelf
+2021-01-02 01:28:22 959  [ pool-1-thread-60:44218 ] - [ TRACE ]  The kitchen 86 is failed to put the order:aba0fc48-ec05-422f-aad4-8b8ec4de636d into Frozen shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:22 959  [ pool-1-thread-60:44218 ] - [ TRACE ]  The kitchen 86successfully put the order aba0fc48-ec05-422f-aad4-8b8ec4de636d to the Overflow shelf
+2021-01-02 01:28:22 960  [ pool-1-thread-52:44219 ] - [ TRACE ]  The kitchen 78 put the order:3713d8af-e6a0-4c11-966c-f26786dc602c into Overflow shelf and call the courier
+2021-01-02 01:28:22 960  [ pool-1-thread-59:44219 ] - [ TRACE ]  The kitchen 85 is failed to put the order:0522c2ec-0242-45e7-8542-f3e98c1384b9 into Hot shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:22 960  [ pool-1-thread-59:44219 ] - [ TRACE ]  The kitchen 85successfully put the order 0522c2ec-0242-45e7-8542-f3e98c1384b9 to the Overflow shelf
+2021-01-02 01:28:22 961  [ pool-1-thread-58:44220 ] - [ TRACE ]  The kitchen 84 receive and cooked the order:a2b13869-6b7e-4e35-8e11-fa9889d24073 try to put into Frozen shelf
+2021-01-02 01:28:22 963  [ pool-2-thread-16:44222 ] - [ TRACE ]  The courier 97 get noticed to pick the order:3713d8af-e6a0-4c11-966c-f26786dc602c from Overflow shelf
+2021-01-02 01:28:22 963  [ pool-1-thread-58:44222 ] - [ TRACE ]  The kitchen 84 is failed to put the order:a2b13869-6b7e-4e35-8e11-fa9889d24073 into Frozen shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:22 963  [ pool-1-thread-58:44222 ] - [ TRACE ]  The kitchen 84 is failed to put the order:a2b13869-6b7e-4e35-8e11-fa9889d24073 into Overflow shelf
+2021-01-02 01:28:22 966  [ pool-1-thread-59:44225 ] - [ TRACE ]  The kitchen 85 put the order:0522c2ec-0242-45e7-8542-f3e98c1384b9 into Overflow shelf and call the courier
+2021-01-02 01:28:22 968  [ pool-1-thread-60:44227 ] - [ TRACE ]  The kitchen 86 put the order:aba0fc48-ec05-422f-aad4-8b8ec4de636d into Overflow shelf and call the courier
+2021-01-02 01:28:22 969  [ pool-1-thread-61:44228 ] - [ TRACE ]  The kitchen 87 put the order:68515b89-96bf-48b6-a07c-68cf17ca3c25 into Overflow shelf and call the courier
+2021-01-02 01:28:22 970  [ pool-2-thread-15:44229 ] - [ TRACE ]  The courier 95 get noticed to pick the order:9df6bbc7-55ee-4f67-8dd1-a9f5ccc56355 from Overflow shelf
+2021-01-02 01:28:22 971  [ pool-2-thread-15:44230 ] - [ TRACE ]  The courier 95 will pick the order in :4 seconds
+2021-01-02 01:28:22 972  [ pool-2-thread-14:44231 ] - [ TRACE ]  The courier 93 get noticed to pick the order:e09f9282-8e05-48a7-8e6e-e23937383735 from Overflow shelf
+2021-01-02 01:28:22 973  [ pool-2-thread-14:44232 ] - [ TRACE ]  The courier 93 will pick the order in :3 seconds
+2021-01-02 01:28:22 974  [ pool-2-thread-13:44233 ] - [ TRACE ]  The courier 91 get noticed to pick the order:a5697bad-48d4-46fd-b3bc-64ef2485907a from Overflow shelf
+2021-01-02 01:28:22 975  [ pool-2-thread-13:44234 ] - [ TRACE ]  The courier 91 will pick the order in :3 seconds
+2021-01-02 01:28:22 976  [ pool-2-thread-12:44235 ] - [ TRACE ]  The courier 89 get noticed to pick the order:098604b5-a141-4a5f-a2e3-0b653515cc42 from Overflow shelf
+2021-01-02 01:28:22 977  [ pool-1-thread-53:44236 ] - [ TRACE ]  The kitchen 79 put the order:20343dea-8856-4717-9be9-be1b37d4791f into Overflow shelf and call the courier
+2021-01-02 01:28:22 979  [ pool-2-thread-12:44238 ] - [ TRACE ]  The courier 89 will pick the order in :4 seconds
+2021-01-02 01:28:22 980  [ pool-2-thread-19:44239 ] - [ TRACE ]  The courier 103 get noticed to pick the order:68515b89-96bf-48b6-a07c-68cf17ca3c25 from Overflow shelf
+2021-01-02 01:28:22 981  [ pool-2-thread-19:44240 ] - [ TRACE ]  The courier 103 will pick the order in :5 seconds
+2021-01-02 01:28:22 982  [ pool-2-thread-18:44241 ] - [ TRACE ]  The courier 101 get noticed to pick the order:aba0fc48-ec05-422f-aad4-8b8ec4de636d from Overflow shelf
+2021-01-02 01:28:22 983  [ pool-2-thread-17:44242 ] - [ TRACE ]  The courier 99 get noticed to pick the order:0522c2ec-0242-45e7-8542-f3e98c1384b9 from Overflow shelf
+2021-01-02 01:28:22 984  [ pool-2-thread-16:44243 ] - [ TRACE ]  The courier 97 will pick the order in :4 seconds
+2021-01-02 01:28:22 985  [ pool-2-thread-17:44244 ] - [ TRACE ]  The courier 99 will pick the order in :3 seconds
+2021-01-02 01:28:22 986  [ pool-2-thread-18:44245 ] - [ TRACE ]  The courier 101 will pick the order in :3 seconds
+2021-01-02 01:28:22 987  [ pool-2-thread-20:44246 ] - [ TRACE ]  The courier 105 get noticed to pick the order:20343dea-8856-4717-9be9-be1b37d4791f from Overflow shelf
+2021-01-02 01:28:22 988  [ pool-2-thread-20:44247 ] - [ TRACE ]  The courier 105 will pick the order in :6 seconds
+2021-01-02 01:28:23 946  [ pool-1-thread-71:45205 ] - [ TRACE ]  The kitchen 106 receive and cooked the order:caf107cc-e6d6-421c-9991-8bcfcc15d5c5 try to put into Hot shelf
+2021-01-02 01:28:23 947  [ pool-1-thread-78:45206 ] - [ TRACE ]  The kitchen 113 receive and cooked the order:05ef2197-5e9a-446b-825e-4d169bdf5670 try to put into Cold shelf
+2021-01-02 01:28:23 947  [ pool-1-thread-71:45206 ] - [ TRACE ]  The kitchen 106 is failed to put the order:caf107cc-e6d6-421c-9991-8bcfcc15d5c5 into Hot shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:23 947  [ pool-1-thread-71:45206 ] - [ TRACE ]  The kitchen 106 is failed to put the order:caf107cc-e6d6-421c-9991-8bcfcc15d5c5 into Overflow shelf
+2021-01-02 01:28:23 948  [ pool-1-thread-77:45207 ] - [ TRACE ]  The kitchen 112 receive and cooked the order:90367105-ec26-41d8-a4a2-6c474d3f703b try to put into Hot shelf
+2021-01-02 01:28:23 948  [ pool-1-thread-78:45207 ] - [ TRACE ]  The kitchen 113successfully put the order 05ef2197-5e9a-446b-825e-4d169bdf5670 to the Cold shelf
+2021-01-02 01:28:23 949  [ pool-1-thread-76:45208 ] - [ TRACE ]  The kitchen 111 receive and cooked the order:5f06be90-beac-4a51-a871-f8e324d38c3c try to put into Hot shelf
+2021-01-02 01:28:23 949  [ pool-1-thread-77:45208 ] - [ TRACE ]  The kitchen 112 is failed to put the order:90367105-ec26-41d8-a4a2-6c474d3f703b into Hot shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:23 949  [ pool-1-thread-77:45208 ] - [ TRACE ]  The kitchen 112 is failed to put the order:90367105-ec26-41d8-a4a2-6c474d3f703b into Overflow shelf
+2021-01-02 01:28:23 950  [ pool-1-thread-76:45209 ] - [ TRACE ]  The kitchen 111 is failed to put the order:5f06be90-beac-4a51-a871-f8e324d38c3c into Hot shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:23 950  [ pool-1-thread-76:45209 ] - [ TRACE ]  The kitchen 111 is failed to put the order:5f06be90-beac-4a51-a871-f8e324d38c3c into Overflow shelf
+2021-01-02 01:28:23 950  [ pool-1-thread-75:45209 ] - [ TRACE ]  The kitchen 110 receive and cooked the order:d7864cd5-f557-4c3e-93d9-b3fb6bb4a37b try to put into Hot shelf
+2021-01-02 01:28:23 951  [ pool-1-thread-75:45210 ] - [ TRACE ]  The kitchen 110 is failed to put the order:d7864cd5-f557-4c3e-93d9-b3fb6bb4a37b into Hot shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:23 951  [ pool-1-thread-74:45210 ] - [ TRACE ]  The kitchen 109 receive and cooked the order:1fab9088-d99d-47ee-acf5-d0f0851738e4 try to put into Cold shelf
+2021-01-02 01:28:23 951  [ pool-1-thread-75:45210 ] - [ TRACE ]  The kitchen 110 is failed to put the order:d7864cd5-f557-4c3e-93d9-b3fb6bb4a37b into Overflow shelf
+2021-01-02 01:28:23 952  [ pool-1-thread-73:45211 ] - [ TRACE ]  The kitchen 108 receive and cooked the order:78b92574-49cd-4995-b5d0-635b3ced5a18 try to put into Cold shelf
+2021-01-02 01:28:23 952  [ pool-1-thread-74:45211 ] - [ TRACE ]  The kitchen 109successfully put the order 1fab9088-d99d-47ee-acf5-d0f0851738e4 to the Cold shelf
+2021-01-02 01:28:23 953  [ pool-1-thread-72:45212 ] - [ TRACE ]  The kitchen 107 receive and cooked the order:4d308771-a0d6-46e7-8ff1-679ddc1d1aa4 try to put into Hot shelf
+2021-01-02 01:28:23 953  [ pool-1-thread-73:45212 ] - [ TRACE ]  The kitchen 108successfully put the order 78b92574-49cd-4995-b5d0-635b3ced5a18 to the Cold shelf
+2021-01-02 01:28:23 954  [ pool-1-thread-73:45213 ] - [ TRACE ]  The kitchen 108 put the order:78b92574-49cd-4995-b5d0-635b3ced5a18 into Cold shelf and call the courier
+2021-01-02 01:28:23 954  [ pool-1-thread-72:45213 ] - [ TRACE ]  The kitchen 107 is failed to put the order:4d308771-a0d6-46e7-8ff1-679ddc1d1aa4 into Hot shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:23 954  [ pool-1-thread-72:45213 ] - [ TRACE ]  The kitchen 107 is failed to put the order:4d308771-a0d6-46e7-8ff1-679ddc1d1aa4 into Overflow shelf
+2021-01-02 01:28:23 955  [ pool-1-thread-74:45214 ] - [ TRACE ]  The kitchen 109 put the order:1fab9088-d99d-47ee-acf5-d0f0851738e4 into Cold shelf and call the courier
+2021-01-02 01:28:23 956  [ pool-1-thread-78:45215 ] - [ TRACE ]  The kitchen 113 put the order:05ef2197-5e9a-446b-825e-4d169bdf5670 into Cold shelf and call the courier
+2021-01-02 01:28:23 957  [ pool-1-thread-80:45216 ] - [ TRACE ]  The kitchen 115 receive and cooked the order:51754609-3f89-487b-9888-bac0a65f86e2 try to put into Cold shelf
+2021-01-02 01:28:23 958  [ pool-1-thread-79:45217 ] - [ TRACE ]  The kitchen 114 receive and cooked the order:41330835-9221-483a-924f-08c7f664d656 try to put into Cold shelf
+2021-01-02 01:28:23 958  [ pool-1-thread-80:45217 ] - [ TRACE ]  The kitchen 115successfully put the order 51754609-3f89-487b-9888-bac0a65f86e2 to the Cold shelf
+2021-01-02 01:28:23 959  [ pool-1-thread-80:45218 ] - [ TRACE ]  The kitchen 115 put the order:51754609-3f89-487b-9888-bac0a65f86e2 into Cold shelf and call the courier
+2021-01-02 01:28:23 959  [ pool-1-thread-79:45218 ] - [ TRACE ]  The kitchen 114successfully put the order 41330835-9221-483a-924f-08c7f664d656 to the Cold shelf
+2021-01-02 01:28:23 959  [ pool-2-thread-23:45218 ] - [ TRACE ]  The courier 121 get noticed to pick the order:05ef2197-5e9a-446b-825e-4d169bdf5670 from Cold shelf
+2021-01-02 01:28:23 960  [ pool-2-thread-22:45219 ] - [ TRACE ]  The courier 119 get noticed to pick the order:1fab9088-d99d-47ee-acf5-d0f0851738e4 from Cold shelf
+2021-01-02 01:28:23 961  [ pool-2-thread-21:45220 ] - [ TRACE ]  The courier 117 get noticed to pick the order:78b92574-49cd-4995-b5d0-635b3ced5a18 from Cold shelf
+2021-01-02 01:28:23 962  [ pool-2-thread-22:45221 ] - [ TRACE ]  The courier 119 will pick the order in :4 seconds
+2021-01-02 01:28:23 962  [ pool-2-thread-24:45221 ] - [ TRACE ]  The courier 123 get noticed to pick the order:51754609-3f89-487b-9888-bac0a65f86e2 from Cold shelf
+2021-01-02 01:28:23 963  [ pool-2-thread-23:45222 ] - [ TRACE ]  The courier 121 will pick the order in :5 seconds
+2021-01-02 01:28:23 964  [ pool-1-thread-79:45223 ] - [ TRACE ]  The kitchen 114 put the order:41330835-9221-483a-924f-08c7f664d656 into Cold shelf and call the courier
+2021-01-02 01:28:23 964  [ pool-2-thread-24:45223 ] - [ TRACE ]  The courier 123 will pick the order in :3 seconds
+2021-01-02 01:28:23 965  [ pool-2-thread-21:45224 ] - [ TRACE ]  The courier 117 will pick the order in :2 seconds
+2021-01-02 01:28:23 966  [ pool-2-thread-25:45225 ] - [ TRACE ]  The courier 125 get noticed to pick the order:41330835-9221-483a-924f-08c7f664d656 from Cold shelf
+2021-01-02 01:28:23 967  [ pool-2-thread-25:45226 ] - [ TRACE ]  The courier 125 will pick the order in :6 seconds
+2021-01-02 01:28:23 976  [ pool-2-thread-8:45235 ] - [ TRACE ]  The courier 71 pick up the order:8275f014-ed83-4554-b0ff-0dbdc24e57ad from the Hot shelf and delivered
+2021-01-02 01:28:23 979  [ pool-2-thread-10:45238 ] - [ TRACE ]  The courier 75 pick up the order:345cfefe-692e-4866-986e-99a18bedbf24 from the Hot shelf and delivered
+2021-01-02 01:28:24 951  [ pool-1-thread-86:46210 ] - [ TRACE ]  The kitchen 126 receive and cooked the order:3f0008f5-9429-4a16-ae44-f8f4256797ca try to put into Cold shelf
+2021-01-02 01:28:24 951  [ pool-1-thread-91:46210 ] - [ TRACE ]  The kitchen 131 receive and cooked the order:4b5793f3-2af5-4ac3-816a-7f9c6f91483c try to put into Frozen shelf
+2021-01-02 01:28:24 951  [ pool-1-thread-86:46210 ] - [ TRACE ]  The kitchen 126 is failed to put the order:3f0008f5-9429-4a16-ae44-f8f4256797ca into Cold shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:24 952  [ pool-1-thread-86:46211 ] - [ TRACE ]  The kitchen 126 is failed to put the order:3f0008f5-9429-4a16-ae44-f8f4256797ca into Overflow shelf
+2021-01-02 01:28:24 952  [ pool-1-thread-91:46211 ] - [ TRACE ]  The kitchen 131 is failed to put the order:4b5793f3-2af5-4ac3-816a-7f9c6f91483c into Frozen shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:24 952  [ pool-1-thread-90:46211 ] - [ TRACE ]  The kitchen 130 receive and cooked the order:7bdf9af2-d90e-44e2-9c6c-1ff7b5121133 try to put into Cold shelf
+2021-01-02 01:28:24 952  [ pool-1-thread-91:46211 ] - [ TRACE ]  The kitchen 131 is failed to put the order:4b5793f3-2af5-4ac3-816a-7f9c6f91483c into Overflow shelf
+2021-01-02 01:28:24 953  [ pool-1-thread-90:46212 ] - [ TRACE ]  The kitchen 130 is failed to put the order:7bdf9af2-d90e-44e2-9c6c-1ff7b5121133 into Cold shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:24 953  [ pool-1-thread-89:46212 ] - [ TRACE ]  The kitchen 129 receive and cooked the order:b5d9491a-54b7-4916-a379-fed69d5d180d try to put into Hot shelf
+2021-01-02 01:28:24 953  [ pool-1-thread-90:46212 ] - [ TRACE ]  The kitchen 130 is failed to put the order:7bdf9af2-d90e-44e2-9c6c-1ff7b5121133 into Overflow shelf
+2021-01-02 01:28:24 954  [ pool-1-thread-88:46213 ] - [ TRACE ]  The kitchen 128 receive and cooked the order:1b481a3e-84eb-4532-bd29-47f04e3e7adc try to put into Hot shelf
+2021-01-02 01:28:24 954  [ pool-1-thread-89:46213 ] - [ TRACE ]  The kitchen 129successfully put the order b5d9491a-54b7-4916-a379-fed69d5d180d to the Hot shelf
+2021-01-02 01:28:24 955  [ pool-1-thread-88:46214 ] - [ TRACE ]  The kitchen 128successfully put the order 1b481a3e-84eb-4532-bd29-47f04e3e7adc to the Hot shelf
+2021-01-02 01:28:24 955  [ pool-1-thread-87:46214 ] - [ TRACE ]  The kitchen 127 receive and cooked the order:c052077c-687d-4f24-b2e1-75edeee1186a try to put into Hot shelf
+2021-01-02 01:28:24 956  [ pool-1-thread-88:46215 ] - [ TRACE ]  The kitchen 128 put the order:1b481a3e-84eb-4532-bd29-47f04e3e7adc into Hot shelf and call the courier
+2021-01-02 01:28:24 956  [ pool-1-thread-87:46215 ] - [ TRACE ]  The kitchen 127 is failed to put the order:c052077c-687d-4f24-b2e1-75edeee1186a into Hot shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:24 957  [ pool-1-thread-87:46216 ] - [ TRACE ]  The kitchen 127 is failed to put the order:c052077c-687d-4f24-b2e1-75edeee1186a into Overflow shelf
+2021-01-02 01:28:24 957  [ pool-1-thread-89:46216 ] - [ TRACE ]  The kitchen 129 put the order:b5d9491a-54b7-4916-a379-fed69d5d180d into Hot shelf and call the courier
+2021-01-02 01:28:24 958  [ pool-1-thread-95:46217 ] - [ TRACE ]  The kitchen 135 receive and cooked the order:4546646c-3ca5-4da6-9c60-312a897a6907 try to put into Cold shelf
+2021-01-02 01:28:24 959  [ pool-1-thread-95:46218 ] - [ TRACE ]  The kitchen 135 is failed to put the order:4546646c-3ca5-4da6-9c60-312a897a6907 into Cold shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:24 959  [ pool-1-thread-95:46218 ] - [ TRACE ]  The kitchen 135 is failed to put the order:4546646c-3ca5-4da6-9c60-312a897a6907 into Overflow shelf
+2021-01-02 01:28:24 959  [ pool-1-thread-94:46218 ] - [ TRACE ]  The kitchen 134 receive and cooked the order:e6b72c73-fa53-4f2c-a004-0b60ba7b3be9 try to put into Cold shelf
+2021-01-02 01:28:24 961  [ pool-1-thread-93:46220 ] - [ TRACE ]  The kitchen 133 receive and cooked the order:3b9da9f3-2465-4fbc-84c5-5ecb9bd132b1 try to put into Frozen shelf
+2021-01-02 01:28:24 961  [ pool-1-thread-94:46220 ] - [ TRACE ]  The kitchen 134 is failed to put the order:e6b72c73-fa53-4f2c-a004-0b60ba7b3be9 into Cold shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:24 961  [ pool-1-thread-94:46220 ] - [ TRACE ]  The kitchen 134 is failed to put the order:e6b72c73-fa53-4f2c-a004-0b60ba7b3be9 into Overflow shelf
+2021-01-02 01:28:24 962  [ pool-1-thread-92:46221 ] - [ TRACE ]  The kitchen 132 receive and cooked the order:160ccc3a-af83-43e0-af0b-6a889aea7339 try to put into Frozen shelf
+2021-01-02 01:28:24 962  [ pool-1-thread-93:46221 ] - [ TRACE ]  The kitchen 133 is failed to put the order:3b9da9f3-2465-4fbc-84c5-5ecb9bd132b1 into Frozen shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:24 962  [ pool-1-thread-93:46221 ] - [ TRACE ]  The kitchen 133 is failed to put the order:3b9da9f3-2465-4fbc-84c5-5ecb9bd132b1 into Overflow shelf
+2021-01-02 01:28:24 963  [ pool-2-thread-27:46222 ] - [ TRACE ]  The courier 139 get noticed to pick the order:b5d9491a-54b7-4916-a379-fed69d5d180d from Hot shelf
+2021-01-02 01:28:24 963  [ pool-1-thread-92:46222 ] - [ TRACE ]  The kitchen 132 is failed to put the order:160ccc3a-af83-43e0-af0b-6a889aea7339 into Frozen shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:24 963  [ pool-1-thread-92:46222 ] - [ TRACE ]  The kitchen 132 is failed to put the order:160ccc3a-af83-43e0-af0b-6a889aea7339 into Overflow shelf
+2021-01-02 01:28:24 964  [ pool-2-thread-26:46223 ] - [ TRACE ]  The courier 137 get noticed to pick the order:1b481a3e-84eb-4532-bd29-47f04e3e7adc from Hot shelf
+2021-01-02 01:28:24 965  [ pool-2-thread-27:46224 ] - [ TRACE ]  The courier 139 will pick the order in :6 seconds
+2021-01-02 01:28:24 966  [ pool-2-thread-26:46225 ] - [ TRACE ]  The courier 137 will pick the order in :6 seconds
+2021-01-02 01:28:24 973  [ pool-2-thread-3:46232 ] - [ TRACE ]  The courier 61 pick up the order:e537a1b8-1505-49ae-a71e-a3ab80e8b606 from the Hot shelf and delivered
+2021-01-02 01:28:24 974  [ pool-2-thread-2:46233 ] - [ TRACE ]  The courier 60 pick up the order:d2d2d948-f019-4806-bb7e-bb2172bd75d9 from the Hot shelf and delivered
+2021-01-02 01:28:24 975  [ pool-2-thread-4:46234 ] - [ TRACE ]  The courier 63 pick up the order:3aaccfce-3dbe-4967-a2fb-b6c06b4de61d from the Frozen shelf and delivered
+2021-01-02 01:28:25 955  [ pool-1-thread-98:47214 ] - [ TRACE ]  The kitchen 140 receive and cooked the order:8ea031b3-6545-4140-9dee-745268d7b877 try to put into Frozen shelf
+2021-01-02 01:28:25 956  [ pool-1-thread-104:47215 ] - [ TRACE ]  The kitchen 146 receive and cooked the order:e65ef8c8-d9e2-47cf-a6e2-ac976bcfdb9d try to put into Frozen shelf
+2021-01-02 01:28:25 956  [ pool-1-thread-98:47215 ] - [ TRACE ]  The kitchen 140successfully put the order 8ea031b3-6545-4140-9dee-745268d7b877 to the Frozen shelf
+2021-01-02 01:28:25 957  [ pool-1-thread-103:47216 ] - [ TRACE ]  The kitchen 145 receive and cooked the order:46a4e47d-ccc1-4c88-a006-83930521899c try to put into Hot shelf
+2021-01-02 01:28:25 957  [ pool-1-thread-104:47216 ] - [ TRACE ]  The kitchen 146 is failed to put the order:e65ef8c8-d9e2-47cf-a6e2-ac976bcfdb9d into Frozen shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:25 957  [ pool-1-thread-104:47216 ] - [ TRACE ]  The kitchen 146 is failed to put the order:e65ef8c8-d9e2-47cf-a6e2-ac976bcfdb9d into Overflow shelf
+2021-01-02 01:28:25 958  [ pool-1-thread-102:47217 ] - [ TRACE ]  The kitchen 144 receive and cooked the order:a0023411-c19d-4723-b6d1-6b8c8ff1b417 try to put into Frozen shelf
+2021-01-02 01:28:25 958  [ pool-1-thread-103:47217 ] - [ TRACE ]  The kitchen 145successfully put the order 46a4e47d-ccc1-4c88-a006-83930521899c to the Hot shelf
+2021-01-02 01:28:25 959  [ pool-1-thread-101:47218 ] - [ TRACE ]  The kitchen 143 receive and cooked the order:2c772706-189c-4ec4-80ad-06ea17f21f11 try to put into Cold shelf
+2021-01-02 01:28:25 959  [ pool-1-thread-102:47218 ] - [ TRACE ]  The kitchen 144 is failed to put the order:a0023411-c19d-4723-b6d1-6b8c8ff1b417 into Frozen shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:25 959  [ pool-1-thread-102:47218 ] - [ TRACE ]  The kitchen 144 is failed to put the order:a0023411-c19d-4723-b6d1-6b8c8ff1b417 into Overflow shelf
+2021-01-02 01:28:25 960  [ pool-1-thread-100:47219 ] - [ TRACE ]  The kitchen 142 receive and cooked the order:def3f65e-6ffb-4715-8561-ace9d312ddc5 try to put into Cold shelf
+2021-01-02 01:28:25 960  [ pool-1-thread-101:47219 ] - [ TRACE ]  The kitchen 143 is failed to put the order:2c772706-189c-4ec4-80ad-06ea17f21f11 into Cold shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:25 960  [ pool-1-thread-101:47219 ] - [ TRACE ]  The kitchen 143 is failed to put the order:2c772706-189c-4ec4-80ad-06ea17f21f11 into Overflow shelf
+2021-01-02 01:28:25 961  [ pool-1-thread-99:47220 ] - [ TRACE ]  The kitchen 141 receive and cooked the order:24f3e17b-eba0-409a-8630-463cb05d89c3 try to put into Cold shelf
+2021-01-02 01:28:25 961  [ pool-1-thread-100:47220 ] - [ TRACE ]  The kitchen 142 is failed to put the order:def3f65e-6ffb-4715-8561-ace9d312ddc5 into Cold shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:25 962  [ pool-1-thread-100:47221 ] - [ TRACE ]  The kitchen 142 is failed to put the order:def3f65e-6ffb-4715-8561-ace9d312ddc5 into Overflow shelf
+2021-01-02 01:28:25 963  [ pool-1-thread-99:47222 ] - [ TRACE ]  The kitchen 141 is failed to put the order:24f3e17b-eba0-409a-8630-463cb05d89c3 into Cold shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:25 963  [ pool-1-thread-99:47222 ] - [ TRACE ]  The kitchen 141 is failed to put the order:24f3e17b-eba0-409a-8630-463cb05d89c3 into Overflow shelf
+2021-01-02 01:28:25 963  [ pool-1-thread-103:47222 ] - [ TRACE ]  The kitchen 145 put the order:46a4e47d-ccc1-4c88-a006-83930521899c into Hot shelf and call the courier
+2021-01-02 01:28:25 964  [ pool-1-thread-107:47223 ] - [ TRACE ]  The kitchen 149 receive and cooked the order:df726ab4-a999-46b5-8e31-4a1bd523fcb9 try to put into Hot shelf
+2021-01-02 01:28:25 965  [ pool-1-thread-98:47224 ] - [ TRACE ]  The kitchen 140 put the order:8ea031b3-6545-4140-9dee-745268d7b877 into Frozen shelf and call the courier
+2021-01-02 01:28:25 965  [ pool-1-thread-107:47224 ] - [ TRACE ]  The kitchen 149successfully put the order df726ab4-a999-46b5-8e31-4a1bd523fcb9 to the Hot shelf
+2021-01-02 01:28:25 966  [ pool-1-thread-106:47225 ] - [ TRACE ]  The kitchen 148 receive and cooked the order:42951124-c574-45a0-bddf-25e702c65914 try to put into Cold shelf
+2021-01-02 01:28:25 967  [ pool-1-thread-105:47226 ] - [ TRACE ]  The kitchen 147 receive and cooked the order:848dfc63-eab6-48b7-a2db-04d13190ce8c try to put into Hot shelf
+2021-01-02 01:28:25 967  [ pool-1-thread-106:47226 ] - [ TRACE ]  The kitchen 148successfully put the order 42951124-c574-45a0-bddf-25e702c65914 to the Cold shelf
+2021-01-02 01:28:25 968  [ pool-1-thread-106:47227 ] - [ TRACE ]  The kitchen 148 put the order:42951124-c574-45a0-bddf-25e702c65914 into Cold shelf and call the courier
+2021-01-02 01:28:25 968  [ pool-1-thread-105:47227 ] - [ TRACE ]  The kitchen 147 is failed to put the order:848dfc63-eab6-48b7-a2db-04d13190ce8c into Hot shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:25 968  [ pool-1-thread-105:47227 ] - [ TRACE ]  The kitchen 147 is failed to put the order:848dfc63-eab6-48b7-a2db-04d13190ce8c into Overflow shelf
+2021-01-02 01:28:25 969  [ pool-2-thread-29:47228 ] - [ TRACE ]  The courier 153 get noticed to pick the order:8ea031b3-6545-4140-9dee-745268d7b877 from Frozen shelf
+2021-01-02 01:28:25 970  [ pool-2-thread-21:47229 ] - [ TRACE ]  The courier 117 pick up the order:78b92574-49cd-4995-b5d0-635b3ced5a18 from the Cold shelf and delivered
+2021-01-02 01:28:25 971  [ pool-1-thread-107:47230 ] - [ TRACE ]  The kitchen 149 put the order:df726ab4-a999-46b5-8e31-4a1bd523fcb9 into Hot shelf and call the courier
+2021-01-02 01:28:25 972  [ pool-2-thread-28:47231 ] - [ TRACE ]  The courier 151 get noticed to pick the order:46a4e47d-ccc1-4c88-a006-83930521899c from Hot shelf
+2021-01-02 01:28:25 973  [ pool-2-thread-31:47232 ] - [ TRACE ]  The courier 157 get noticed to pick the order:df726ab4-a999-46b5-8e31-4a1bd523fcb9 from Hot shelf
+2021-01-02 01:28:25 974  [ pool-2-thread-29:47233 ] - [ TRACE ]  The courier 153 will pick the order in :4 seconds
+2021-01-02 01:28:25 975  [ pool-2-thread-30:47234 ] - [ TRACE ]  The courier 155 get noticed to pick the order:42951124-c574-45a0-bddf-25e702c65914 from Cold shelf
+2021-01-02 01:28:25 976  [ pool-2-thread-30:47235 ] - [ TRACE ]  The courier 155 will pick the order in :4 seconds
+2021-01-02 01:28:25 977  [ pool-2-thread-31:47236 ] - [ TRACE ]  The courier 157 will pick the order in :4 seconds
+2021-01-02 01:28:25 978  [ pool-2-thread-28:47237 ] - [ TRACE ]  The courier 151 will pick the order in :2 seconds
+2021-01-02 01:28:25 979  [ pool-2-thread-14:47238 ] - [ TRACE ]  The courier 93 pick up the order:e09f9282-8e05-48a7-8e6e-e23937383735 from the Overflow shelf and delivered
+2021-01-02 01:28:25 980  [ pool-2-thread-13:47239 ] - [ TRACE ]  The courier 91 pick up the order:a5697bad-48d4-46fd-b3bc-64ef2485907a from the Overflow shelf and delivered
+2021-01-02 01:28:25 987  [ pool-2-thread-17:47246 ] - [ TRACE ]  The courier 99 pick up the order:0522c2ec-0242-45e7-8542-f3e98c1384b9 from the Overflow shelf and delivered
+2021-01-02 01:28:25 988  [ pool-2-thread-18:47247 ] - [ TRACE ]  The courier 101 pick up the order:aba0fc48-ec05-422f-aad4-8b8ec4de636d from the Overflow shelf and delivered
+2021-01-02 01:28:26 959  [ pool-1-thread-112:48218 ] - [ TRACE ]  The kitchen 158 receive and cooked the order:5bb755b9-e6a8-4932-9139-bc04fafbc240 try to put into Hot shelf
+2021-01-02 01:28:26 960  [ pool-1-thread-118:48219 ] - [ TRACE ]  The kitchen 164 receive and cooked the order:48465fc7-d534-4b9b-b919-63e5beebd301 try to put into Frozen shelf
+2021-01-02 01:28:26 960  [ pool-1-thread-112:48219 ] - [ TRACE ]  The kitchen 158 is failed to put the order:5bb755b9-e6a8-4932-9139-bc04fafbc240 into Hot shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:26 960  [ pool-1-thread-112:48219 ] - [ TRACE ]  The kitchen 158successfully put the order 5bb755b9-e6a8-4932-9139-bc04fafbc240 to the Overflow shelf
+2021-01-02 01:28:26 960  [ pool-1-thread-118:48219 ] - [ TRACE ]  The kitchen 164 is failed to put the order:48465fc7-d534-4b9b-b919-63e5beebd301 into Frozen shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:26 960  [ pool-1-thread-117:48219 ] - [ TRACE ]  The kitchen 163 receive and cooked the order:44e6ea89-f11c-414d-aa72-7c10641eff8d try to put into Frozen shelf
+2021-01-02 01:28:26 960  [ pool-1-thread-118:48219 ] - [ TRACE ]  The kitchen 164successfully put the order 48465fc7-d534-4b9b-b919-63e5beebd301 to the Overflow shelf
+2021-01-02 01:28:26 961  [ pool-1-thread-117:48220 ] - [ TRACE ]  The kitchen 163 is failed to put the order:44e6ea89-f11c-414d-aa72-7c10641eff8d into Frozen shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:26 961  [ pool-1-thread-116:48220 ] - [ TRACE ]  The kitchen 162 receive and cooked the order:df4e3e19-55d2-4131-8ab0-3563b44f8291 try to put into Cold shelf
+2021-01-02 01:28:26 961  [ pool-1-thread-117:48220 ] - [ TRACE ]  The kitchen 163successfully put the order 44e6ea89-f11c-414d-aa72-7c10641eff8d to the Overflow shelf
+2021-01-02 01:28:26 962  [ pool-1-thread-115:48221 ] - [ TRACE ]  The kitchen 161 receive and cooked the order:62e667ee-a86d-4be2-97f6-a6af60183e88 try to put into Cold shelf
+2021-01-02 01:28:26 962  [ pool-1-thread-116:48221 ] - [ TRACE ]  The kitchen 162 is failed to put the order:df4e3e19-55d2-4131-8ab0-3563b44f8291 into Cold shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:26 962  [ pool-1-thread-116:48221 ] - [ TRACE ]  The kitchen 162successfully put the order df4e3e19-55d2-4131-8ab0-3563b44f8291 to the Overflow shelf
+2021-01-02 01:28:26 963  [ pool-1-thread-114:48222 ] - [ TRACE ]  The kitchen 160 receive and cooked the order:4ed428d6-f247-451a-aebf-c5157b2eb502 try to put into Cold shelf
+2021-01-02 01:28:26 963  [ pool-1-thread-115:48222 ] - [ TRACE ]  The kitchen 161 is failed to put the order:62e667ee-a86d-4be2-97f6-a6af60183e88 into Cold shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:26 963  [ pool-1-thread-115:48222 ] - [ TRACE ]  The kitchen 161 is failed to put the order:62e667ee-a86d-4be2-97f6-a6af60183e88 into Overflow shelf
+2021-01-02 01:28:26 964  [ pool-1-thread-113:48223 ] - [ TRACE ]  The kitchen 159 receive and cooked the order:58dbdb26-670c-4dac-b72c-21152f5d62e7 try to put into Hot shelf
+2021-01-02 01:28:26 964  [ pool-1-thread-114:48223 ] - [ TRACE ]  The kitchen 160 is failed to put the order:4ed428d6-f247-451a-aebf-c5157b2eb502 into Cold shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:26 965  [ pool-1-thread-114:48224 ] - [ TRACE ]  The kitchen 160 is failed to put the order:4ed428d6-f247-451a-aebf-c5157b2eb502 into Overflow shelf
+2021-01-02 01:28:26 966  [ pool-2-thread-24:48225 ] - [ TRACE ]  The courier 123 pick up the order:51754609-3f89-487b-9888-bac0a65f86e2 from the Cold shelf and delivered
+2021-01-02 01:28:26 966  [ pool-1-thread-113:48225 ] - [ TRACE ]  The kitchen 159 is failed to put the order:58dbdb26-670c-4dac-b72c-21152f5d62e7 into Hot shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:26 966  [ pool-1-thread-113:48225 ] - [ TRACE ]  The kitchen 159 is failed to put the order:58dbdb26-670c-4dac-b72c-21152f5d62e7 into Overflow shelf
+2021-01-02 01:28:26 967  [ pool-1-thread-116:48226 ] - [ TRACE ]  The kitchen 162 put the order:df4e3e19-55d2-4131-8ab0-3563b44f8291 into Overflow shelf and call the courier
+2021-01-02 01:28:26 968  [ pool-1-thread-117:48227 ] - [ TRACE ]  The kitchen 163 put the order:44e6ea89-f11c-414d-aa72-7c10641eff8d into Overflow shelf and call the courier
+2021-01-02 01:28:26 969  [ pool-1-thread-118:48228 ] - [ TRACE ]  The kitchen 164 put the order:48465fc7-d534-4b9b-b919-63e5beebd301 into Overflow shelf and call the courier
+2021-01-02 01:28:26 970  [ pool-1-thread-112:48229 ] - [ TRACE ]  The kitchen 158 put the order:5bb755b9-e6a8-4932-9139-bc04fafbc240 into Overflow shelf and call the courier
+2021-01-02 01:28:26 971  [ pool-1-thread-121:48230 ] - [ TRACE ]  The kitchen 167 receive and cooked the order:68e83bf6-bdee-4192-8905-40140b421bc6 try to put into Hot shelf
+2021-01-02 01:28:26 973  [ pool-1-thread-121:48232 ] - [ TRACE ]  The kitchen 167 is failed to put the order:68e83bf6-bdee-4192-8905-40140b421bc6 into Hot shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:26 973  [ pool-1-thread-121:48232 ] - [ TRACE ]  The kitchen 167successfully put the order 68e83bf6-bdee-4192-8905-40140b421bc6 to the Overflow shelf
+2021-01-02 01:28:26 973  [ pool-1-thread-120:48232 ] - [ TRACE ]  The kitchen 166 receive and cooked the order:8d6a4d1a-ca56-4567-b3aa-a1e3d20f8017 try to put into Hot shelf
+2021-01-02 01:28:26 975  [ pool-1-thread-120:48234 ] - [ TRACE ]  The kitchen 166 is failed to put the order:8d6a4d1a-ca56-4567-b3aa-a1e3d20f8017 into Hot shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:26 975  [ pool-1-thread-119:48234 ] - [ TRACE ]  The kitchen 165 receive and cooked the order:fb850bd3-728f-4118-a097-2bcf3a12c239 try to put into Hot shelf
+2021-01-02 01:28:26 975  [ pool-1-thread-120:48234 ] - [ TRACE ]  The kitchen 166 is failed to put the order:8d6a4d1a-ca56-4567-b3aa-a1e3d20f8017 into Overflow shelf
+2021-01-02 01:28:26 976  [ pool-1-thread-121:48235 ] - [ TRACE ]  The kitchen 167 put the order:68e83bf6-bdee-4192-8905-40140b421bc6 into Overflow shelf and call the courier
+2021-01-02 01:28:26 976  [ pool-1-thread-119:48235 ] - [ TRACE ]  The kitchen 165 is failed to put the order:fb850bd3-728f-4118-a097-2bcf3a12c239 into Hot shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:26 976  [ pool-1-thread-119:48235 ] - [ TRACE ]  The kitchen 165 is failed to put the order:fb850bd3-728f-4118-a097-2bcf3a12c239 into Overflow shelf
+2021-01-02 01:28:26 977  [ pool-2-thread-6:48236 ] - [ TRACE ]  The courier 67 pick up the order:51c5017b-f812-40ac-8d68-87aab3fbab6a from the Frozen shelf and delivered
+2021-01-02 01:28:26 978  [ pool-2-thread-5:48237 ] - [ TRACE ]  The courier 65 pick up the order:1b56ee15-70e7-443e-96cb-0479e9d46381 from the Frozen shelf and delivered
+2021-01-02 01:28:26 979  [ pool-2-thread-15:48238 ] - [ TRACE ]  The courier 95 pick up the order:9df6bbc7-55ee-4f67-8dd1-a9f5ccc56355 from the Overflow shelf and delivered
+2021-01-02 01:28:26 980  [ pool-2-thread-35:48239 ] - [ TRACE ]  The courier 175 get noticed to pick the order:5bb755b9-e6a8-4932-9139-bc04fafbc240 from Overflow shelf
+2021-01-02 01:28:26 981  [ pool-2-thread-34:48240 ] - [ TRACE ]  The courier 173 get noticed to pick the order:48465fc7-d534-4b9b-b919-63e5beebd301 from Overflow shelf
+2021-01-02 01:28:26 983  [ pool-2-thread-33:48242 ] - [ TRACE ]  The courier 171 get noticed to pick the order:44e6ea89-f11c-414d-aa72-7c10641eff8d from Overflow shelf
+2021-01-02 01:28:26 984  [ pool-2-thread-32:48243 ] - [ TRACE ]  The courier 169 get noticed to pick the order:df4e3e19-55d2-4131-8ab0-3563b44f8291 from Overflow shelf
+2021-01-02 01:28:26 985  [ pool-2-thread-16:48244 ] - [ TRACE ]  The courier 97 pick up the order:3713d8af-e6a0-4c11-966c-f26786dc602c from the Overflow shelf and delivered
+2021-01-02 01:28:26 986  [ pool-2-thread-12:48245 ] - [ TRACE ]  The courier 89 pick up the order:098604b5-a141-4a5f-a2e3-0b653515cc42 from the Overflow shelf and delivered
+2021-01-02 01:28:26 987  [ pool-2-thread-33:48246 ] - [ TRACE ]  The courier 171 will pick the order in :3 seconds
+2021-01-02 01:28:26 988  [ pool-2-thread-34:48247 ] - [ TRACE ]  The courier 173 will pick the order in :4 seconds
+2021-01-02 01:28:26 990  [ pool-2-thread-35:48249 ] - [ TRACE ]  The courier 175 will pick the order in :3 seconds
+2021-01-02 01:28:26 991  [ pool-2-thread-36:48250 ] - [ TRACE ]  The courier 177 get noticed to pick the order:68e83bf6-bdee-4192-8905-40140b421bc6 from Overflow shelf
+2021-01-02 01:28:26 992  [ pool-2-thread-9:48251 ] - [ TRACE ]  The courier 73 pick up the order:87441694-ff97-4d1b-89e3-c4b0b1fd041e from the Frozen shelf and delivered
+2021-01-02 01:28:26 992  [ pool-2-thread-1:48251 ] - [ TRACE ]  The courier 59 pick up the order:9687809b-8f4b-4a6f-be3f-6e41e4ced3ed from the Frozen shelf and delivered
+2021-01-02 01:28:26 993  [ pool-2-thread-36:48252 ] - [ TRACE ]  The courier 177 will pick the order in :4 seconds
+2021-01-02 01:28:26 994  [ pool-2-thread-32:48253 ] - [ TRACE ]  The courier 169 will pick the order in :3 seconds
+2021-01-02 01:28:27 770  [ pool-2-thread-11:49029 ] - [ TRACE ]  The courier 77 pick up the order:a8cfcb76-7f24-4420-a5ba-d46dd77bdffd from the Overflow shelf and delivered
+2021-01-02 01:28:27 961  [ pool-1-thread-127:49220 ] - [ TRACE ]  The kitchen 178 receive and cooked the order:0d74c9f0-4fd5-4606-a1dc-019d9ab52af6 try to put into Cold shelf
+2021-01-02 01:28:27 962  [ pool-1-thread-131:49221 ] - [ TRACE ]  The kitchen 182 receive and cooked the order:7f2381be-5ab9-4385-a7a2-4a940a22e134 try to put into Hot shelf
+2021-01-02 01:28:27 962  [ pool-1-thread-127:49221 ] - [ TRACE ]  The kitchen 178successfully put the order 0d74c9f0-4fd5-4606-a1dc-019d9ab52af6 to the Cold shelf
+2021-01-02 01:28:27 963  [ pool-2-thread-22:49222 ] - [ TRACE ]  The courier 119 pick up the order:1fab9088-d99d-47ee-acf5-d0f0851738e4 from the Cold shelf and delivered
+2021-01-02 01:28:27 963  [ pool-1-thread-131:49222 ] - [ TRACE ]  The kitchen 182 is failed to put the order:7f2381be-5ab9-4385-a7a2-4a940a22e134 into Hot shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:27 963  [ pool-1-thread-131:49222 ] - [ TRACE ]  The kitchen 182successfully put the order 7f2381be-5ab9-4385-a7a2-4a940a22e134 to the Overflow shelf
+2021-01-02 01:28:27 964  [ pool-1-thread-42:49223 ] - [ TRACE ]  The kitchen 57 receive and cooked the order:020ad68f-da34-4eca-ae7e-3b67e80a299c try to put into Hot shelf
+2021-01-02 01:28:27 964  [ pool-1-thread-34:49223 ] - [ TRACE ]  The kitchen 49 receive and cooked the order:a0d76390-3e71-440e-a742-20c36a67fa9a try to put into Frozen shelf
+2021-01-02 01:28:27 964  [ pool-1-thread-42:49223 ] - [ TRACE ]  The kitchen 57 is failed to put the order:020ad68f-da34-4eca-ae7e-3b67e80a299c into Hot shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:27 964  [ pool-1-thread-42:49223 ] - [ TRACE ]  The kitchen 57successfully put the order 020ad68f-da34-4eca-ae7e-3b67e80a299c to the Overflow shelf
+2021-01-02 01:28:27 965  [ pool-1-thread-33:49224 ] - [ TRACE ]  The kitchen 48 receive and cooked the order:22f532ca-dfc8-448a-9e04-7dcfa01a175e try to put into Hot shelf
+2021-01-02 01:28:27 965  [ pool-1-thread-34:49224 ] - [ TRACE ]  The kitchen 49successfully put the order a0d76390-3e71-440e-a742-20c36a67fa9a to the Frozen shelf
+2021-01-02 01:28:27 966  [ pool-1-thread-31:49225 ] - [ TRACE ]  The kitchen 46 receive and cooked the order:60db864b-8270-43ef-9d91-985707390765 try to put into Hot shelf
+2021-01-02 01:28:27 966  [ pool-1-thread-33:49225 ] - [ TRACE ]  The kitchen 48 is failed to put the order:22f532ca-dfc8-448a-9e04-7dcfa01a175e into Hot shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:27 966  [ pool-1-thread-33:49225 ] - [ TRACE ]  The kitchen 48successfully put the order 22f532ca-dfc8-448a-9e04-7dcfa01a175e to the Overflow shelf
+2021-01-02 01:28:27 967  [ pool-1-thread-127:49226 ] - [ TRACE ]  The kitchen 178 put the order:0d74c9f0-4fd5-4606-a1dc-019d9ab52af6 into Cold shelf and call the courier
+2021-01-02 01:28:27 967  [ pool-1-thread-31:49226 ] - [ TRACE ]  The kitchen 46 is failed to put the order:60db864b-8270-43ef-9d91-985707390765 into Hot shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:27 968  [ pool-1-thread-31:49227 ] - [ TRACE ]  The kitchen 46 is failed to put the order:60db864b-8270-43ef-9d91-985707390765 into Overflow shelf
+2021-01-02 01:28:27 969  [ pool-1-thread-132:49228 ] - [ TRACE ]  The kitchen 183 receive and cooked the order:75bef98f-89ba-4359-b738-b3184688ca7a try to put into Frozen shelf
+2021-01-02 01:28:27 970  [ pool-1-thread-130:49229 ] - [ TRACE ]  The kitchen 181 receive and cooked the order:4c25f887-03cc-4dcd-9945-6a8102c5ef22 try to put into Cold shelf
+2021-01-02 01:28:27 970  [ pool-1-thread-132:49229 ] - [ TRACE ]  The kitchen 183successfully put the order 75bef98f-89ba-4359-b738-b3184688ca7a to the Frozen shelf
+2021-01-02 01:28:27 971  [ pool-1-thread-128:49230 ] - [ TRACE ]  The kitchen 179 receive and cooked the order:1b9a920d-2880-44a3-abba-20903f2690d6 try to put into Hot shelf
+2021-01-02 01:28:27 971  [ pool-1-thread-130:49230 ] - [ TRACE ]  The kitchen 181successfully put the order 4c25f887-03cc-4dcd-9945-6a8102c5ef22 to the Cold shelf
+2021-01-02 01:28:27 972  [ pool-1-thread-129:49231 ] - [ TRACE ]  The kitchen 180 receive and cooked the order:c5ec5a4b-818e-4478-8956-019259be4168 try to put into Cold shelf
+2021-01-02 01:28:27 972  [ pool-1-thread-128:49231 ] - [ TRACE ]  The kitchen 179 is failed to put the order:1b9a920d-2880-44a3-abba-20903f2690d6 into Hot shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:27 972  [ pool-1-thread-128:49231 ] - [ TRACE ]  The kitchen 179 is failed to put the order:1b9a920d-2880-44a3-abba-20903f2690d6 into Overflow shelf
+2021-01-02 01:28:27 973  [ pool-1-thread-129:49232 ] - [ TRACE ]  The kitchen 180 is failed to put the order:c5ec5a4b-818e-4478-8956-019259be4168 into Cold shelf, now try to put it into Overflow shelf
+2021-01-02 01:28:27 973  [ pool-1-thread-130:49232 ] - [ TRACE ]  The kitchen 181 put the order:4c25f887-03cc-4dcd-9945-6a8102c5ef22 into Cold shelf and call the courier
+2021-01-02 01:28:27 973  [ pool-1-thread-129:49232 ] - [ TRACE ]  The kitchen 180 is failed to put the order:c5ec5a4b-818e-4478-8956-019259be4168 into Overflow shelf
+2021-01-02 01:28:27 974  [ pool-1-thread-132:49233 ] - [ TRACE ]  The kitchen 183 put the order:75bef98f-89ba-4359-b738-b3184688ca7a into Frozen shelf and call the courier
+2021-01-02 01:28:27 976  [ pool-2-thread-37:49235 ] - [ TRACE ]  The courier 184 get noticed to pick the order:0d74c9f0-4fd5-4606-a1dc-019d9ab52af6 from Cold shelf
+2021-01-02 01:28:27 976  [ pool-2-thread-37:49235 ] - [ TRACE ]  The courier 184 will pick the order in :5 seconds
+2021-01-02 01:28:27 977  [ pool-1-thread-33:49236 ] - [ TRACE ]  The kitchen 48 put the order:22f532ca-dfc8-448a-9e04-7dcfa01a175e into Overflow shelf and call the courier
+2021-01-02 01:28:27 978  [ pool-1-thread-34:49237 ] - [ TRACE ]  The kitchen 49 put the order:a0d76390-3e71-440e-a742-20c36a67fa9a into Frozen shelf and call the courier
+2021-01-02 01:28:27 980  [ pool-1-thread-42:49239 ] - [ TRACE ]  The kitchen 57 put the order:020ad68f-da34-4eca-ae7e-3b67e80a299c into Overflow shelf and call the courier
+2021-01-02 01:28:27 981  [ pool-1-thread-131:49240 ] - [ TRACE ]  The kitchen 182 put the order:7f2381be-5ab9-4385-a7a2-4a940a22e134 into Overflow shelf and call the courier
+2021-01-02 01:28:27 982  [ pool-2-thread-42:49241 ] - [ TRACE ]  The courier 189 get noticed to pick the order:020ad68f-da34-4eca-ae7e-3b67e80a299c from Overflow shelf
+2021-01-02 01:28:27 983  [ pool-2-thread-42:49242 ] - [ TRACE ]  The courier 189 will pick the order in :3 seconds
+2021-01-02 01:28:27 984  [ pool-2-thread-28:49243 ] - [ TRACE ]  The courier 151 pick up the order:46a4e47d-ccc1-4c88-a006-83930521899c from the Hot shelf and delivered
+2021-01-02 01:28:27 985  [ pool-2-thread-41:49244 ] - [ TRACE ]  The courier 188 get noticed to pick the order:a0d76390-3e71-440e-a742-20c36a67fa9a from Frozen shelf
+2021-01-02 01:28:27 986  [ pool-2-thread-40:49245 ] - [ TRACE ]  The courier 187 get noticed to pick the order:22f532ca-dfc8-448a-9e04-7dcfa01a175e from Overflow shelf
+2021-01-02 01:28:27 987  [ pool-2-thread-39:49246 ] - [ TRACE ]  The courier 186 get noticed to pick the order:75bef98f-89ba-4359-b738-b3184688ca7a from Frozen shelf
+2021-01-02 01:28:27 988  [ pool-2-thread-38:49247 ] - [ TRACE ]  The courier 185 get noticed to pick the order:4c25f887-03cc-4dcd-9945-6a8102c5ef22 from Cold shelf
+2021-01-02 01:28:27 990  [ pool-2-thread-38:49249 ] - [ TRACE ]  The courier 185 will pick the order in :2 seconds
+2021-01-02 01:28:27 991  [ pool-2-thread-7:49250 ] - [ TRACE ]  The courier 69 pick up the order:9748651e-c3f8-4c4a-9de9-5360467c86a2 from the Hot shelf and delivered
+2021-01-02 01:28:27 992  [ pool-2-thread-39:49251 ] - [ TRACE ]  The courier 186 will pick the order in :4 seconds
+2021-01-02 01:28:27 993  [ pool-2-thread-40:49252 ] - [ TRACE ]  The courier 187 will pick the order in :5 seconds
+2021-01-02 01:28:27 993  [ pool-2-thread-41:49252 ] - [ TRACE ]  The courier 188 will pick the order in :2 seconds
+2021-01-02 01:28:27 994  [ pool-2-thread-19:49253 ] - [ TRACE ]  The courier 103 pick up the order:68515b89-96bf-48b6-a07c-68cf17ca3c25 from the Overflow shelf and delivered
+2021-01-02 01:28:27 996  [ pool-2-thread-43:49255 ] - [ TRACE ]  The courier 190 get noticed to pick the order:7f2381be-5ab9-4385-a7a2-4a940a22e134 from Overflow shelf
+2021-01-02 01:28:27 997  [ pool-2-thread-43:49256 ] - [ TRACE ]  The courier 190 will pick the order in :6 seconds

@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"restaurant"},{"l":"restaurant.constants"},{"l":"restaurant.department"},{"l":"restaurant.log"},{"l":"restaurant.pojo"}]

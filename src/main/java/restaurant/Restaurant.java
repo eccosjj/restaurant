@@ -27,24 +27,68 @@ import restaurant.department.OrderManagerImpl;
 import restaurant.pojo.CookedOrder;
 import restaurant.pojo.ShelfInfo;
 
+/**
+ * The main class of the application,
+ * 
+ * @author junjiesun
+ *
+ */
 public class Restaurant {
     static Logger log = Logger.getLogger(Restaurant.class);
     private String shelfConfig = "shelves.json";
     private String orderConfig = "orders.json";
     private String config = "config.json";
+    /**
+     * The list to hold all orders from the order.json
+     */
     public List<CookedOrder> orders;
+    /**
+     * json object store the content from config.json
+     */
     public JsonObject configJsonObject;
+    /**
+     * the order manager object, hold the all order's info, including all shelf's
+     * content, wasted order list and delivery order list
+     */
     public OrderManager orderManager;
-    // Configuration
+    /**
+     * define how many orders the kitchen receives.
+     */
     public int oneTimeReceive;
+    /**
+     * define time interval between the current receive and the next receive
+     */
     public int pauseBetweenReceive;
+    /**
+     * the minimum second waiting before the courier pick up the order.
+     */
     public int waitMin;
+    /**
+     * the maximum second waiting before the courier pick up the order.
+     */
     public int waitMax;
+    /**
+     * the time out configuration when the choosing an order from overflow when it's
+     * full.
+     */
     public int movingOrderTimeOut;
+    /**
+     * count done the courier pick up the orders
+     */
     public CountDownLatch courierCountDownLatch;
+    /**
+     * to initialize the thread pool for kitchen
+     */
     public ListeningExecutorService listeningExecutorService;
+    /**
+     * to initialize the thread pool for kitchen
+     */
     public ExecutorService courierExecutorService;
 
+    /**
+     * The construct of the class, initialize the orders, the shelfs info via config
+     * file, initialize the order manager. also validate the configuration.
+     */
     public Restaurant() {
         try {
             Gson gson = new Gson();
@@ -127,6 +171,10 @@ public class Restaurant {
 
     }
 
+    /**
+     * The entrance of the application, no args required.
+     * 
+     */
     public static void main(String[] args) {
         log.info("The restaurant starts serving the orders.");
         Restaurant restaurant = new Restaurant();
@@ -138,6 +186,11 @@ public class Restaurant {
         log.info("All orders served, the restaurant is closed.");
     }
 
+    /**
+     * The entrance of the Restaurant service.
+     * 
+     * @throws InterruptedException
+     */
     public void startService() throws InterruptedException {
         int receiveOrderCount = 0;
         courierCountDownLatch = new CountDownLatch(orders.size());

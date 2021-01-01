@@ -18,12 +18,18 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.ListeningExecutorService;
 import com.google.common.util.concurrent.MoreExecutors;
 
+import restaurant.constants.OrderStatus;
 import restaurant.department.Kitchen;
 import restaurant.department.OrderManager;
 import restaurant.pojo.CookedOrder;
 import restaurant.pojo.ShelfInfo;
-import restaurante.constants.OrderStatus;
 
+/**
+ * Restaurant unit test
+ * 
+ * @author junjiesun
+ *
+ */
 public class RestaurantTest {
 
     Restaurant restaurant;
@@ -50,6 +56,9 @@ public class RestaurantTest {
         this.shelfInfos = null;
     }
 
+    /**
+     * test if the configuration is correct
+     */
     @Test
     public void validateConfigurations() {
         Assert.assertTrue(restaurant.waitMin >= 0);
@@ -64,6 +73,11 @@ public class RestaurantTest {
 
     }
 
+    /**
+     * test if all order are cooked, the order status is valid
+     * 
+     * @throws InterruptedException
+     */
     @Test
     public void testCookedAllOrders() throws InterruptedException {
         List<CookedOrder> checkDeliveredOrders = new ArrayList<CookedOrder>();
@@ -99,6 +113,11 @@ public class RestaurantTest {
         Assert.assertEquals(orders.size(), checkDeliveredOrders.size());
     }
 
+    /**
+     * test if any shelf is out of capacity.
+     * 
+     * @throws InterruptedException
+     */
     @Test
     public void testShelfOutOfCapacity() throws InterruptedException {
         CountDownLatch countDownLatch = new CountDownLatch(orders.size());
@@ -131,6 +150,11 @@ public class RestaurantTest {
         listeningExecutorService.shutdown();
     }
 
+    /**
+     * test if all order are delivered or wasted, validate order status
+     * 
+     * @throws InterruptedException
+     */
     @Test
     public void testDeliverAllOrders() throws InterruptedException {
         this.restaurant.startService();

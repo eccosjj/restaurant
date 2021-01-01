@@ -12,6 +12,12 @@ import restaurant.Restaurant;
 import restaurant.pojo.CookedOrder;
 import restaurant.pojo.ShelfInfo;
 
+/**
+ * Kitchen unit test
+ * 
+ * @author junjiesun
+ *
+ */
 public class KitchenTest {
     Restaurant restaurant;
     List<CookedOrder> orders;
@@ -34,6 +40,9 @@ public class KitchenTest {
         this.shelfInfos = null;
     }
 
+    /**
+     * test if the order is put into the right shelf
+     */
     @Test
     public void testPutSpecificShelf() {
         int allowedCapacity = 1;
@@ -48,6 +57,10 @@ public class KitchenTest {
 
     }
 
+    /**
+     * narrow done the shelf capacity, test if the order is put into the overflow
+     * shelf
+     */
     @Test
     public void testPutOverflowShelf() {
         int allowedCapacity = 1;
@@ -68,6 +81,9 @@ public class KitchenTest {
 
     }
 
+    /**
+     * make an order's temp invalid, test if it's put into the overflow shelf
+     */
     @Test
     public void testWrongTempOrder() {
         int allowedCapacity = 1;

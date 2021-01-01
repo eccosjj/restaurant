@@ -1,8 +1,11 @@
 package restaurant.pojo;
 
-/*
- * The Shelf pojo.
- * */
+/**
+ * This Shelf pojo
+ * 
+ * @author junjiesun
+ *
+ */
 public class ShelfInfo {
 
     private String name;

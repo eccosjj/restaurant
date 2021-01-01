@@ -18,6 +18,10 @@ public class MyFileAppender extends FileAppender {
 
     static final String newLogFolder = String.valueOf(System.currentTimeMillis());;
 
+    /**
+     * when the log is activated, it call the getNewLogFileName to generate new log
+     * file every time the application is running
+     */
     public void activateOptions() {
         if (fileName != null) {
             try {
@@ -29,7 +33,9 @@ public class MyFileAppender extends FileAppender {
         }
     }
 
-    // Use the time stamp as the folder of the new log files.
+    /**
+     * generate new log file every time the application is running
+     */
     private String getNewLogFileName() {
         if (fileName != null) {
             final File logFile = new File(fileName);
@@ -39,6 +45,9 @@ public class MyFileAppender extends FileAppender {
         return String.valueOf(newLogFolder);
     }
 
+    /**
+     * only accept the Threshold log configuration in log4j.properties
+     */
     @Override
     public boolean isAsSevereAsThreshold(Priority priority) {
         return this.getThreshold().equals(priority);
