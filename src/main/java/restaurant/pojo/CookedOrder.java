@@ -27,9 +27,8 @@ public class CookedOrder {
 
     @Override
     public String toString() {
-        return "CookedOrder [id=" + id + ", temp=" + temp + ", orderStatus=" + orderStatus + ", discardReason="
-                + discardReason + ", getCurrentValue()=" + getCurrentValue() + ", Shelf=" + getShelfInfo().getName()
-                + "]";
+        return "CookedOrder [id=" + id + ", CurrentValue=" + getCurrentValue() + ", Temp=" + temp + ", Shelf="
+                + getShelfInfo().getName() + ", orderStatus=" + orderStatus + ", discardReason=" + discardReason + "]";
     }
 
     public String getId() {

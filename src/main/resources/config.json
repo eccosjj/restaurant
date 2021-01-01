@@ -1,15 +1,11 @@
 {
     "order": {
-        "one_time_receive": 30,
+        "one_time_receive": 10,
         "receive_interval": 1
     },
     "courier": {
-        "wait_min": 1,
-        "wait_max": 3
+        "wait_min": 2,
+        "wait_max": 6
     },
-    "monitor": {
-        "work": true,
-        "work_interval": 3
-    },
-    "moving_order_time_out": 3
+    "moving_order_time_out": 10
 }

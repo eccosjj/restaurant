@@ -1,24 +1,22 @@
 package restaurant.department;
 
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Random;
-import java.util.Set;
+import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
-
-import org.apache.log4j.Logger;
 
 import restaurant.pojo.CookedOrder;
 import restaurant.pojo.ShelfInfo;
+import restaurante.constants.DiscardReason;
+import restaurante.constants.OrderStatus;
 
-public class Courier extends Thread {
-    private static Logger log = Logger.getLogger(Courier.class);
+public class Courier implements Callable<CookedOrder> {
     private CookedOrder cookedOrder;
     private OrderManager orderManager;
-    private Set<String> checkedShelves;
     private int waitMin;
     private int waitMax;
     private CountDownLatch courierCountDownLatch;
+    private String overflowShelfKey;
 
     public Courier(CookedOrder cookedOrder, OrderManager orderManager, int waitMin, int waitMax,
             CountDownLatch courierCountDownLatch) {
@@ -28,64 +26,91 @@ public class Courier extends Thread {
         this.waitMin = waitMin;
         this.waitMax = waitMax;
         this.courierCountDownLatch = courierCountDownLatch;
+        this.overflowShelfKey = orderManager.getOverflowShelfKey();
     }
 
-    public CookedOrder getCookedOrder() {
-        return cookedOrder;
-    }
-
-    public void setCookedOrder(CookedOrder cookedOrder) {
-        this.cookedOrder = cookedOrder;
-    }
-
-    public Set<String> getCheckedShelves() {
-        return checkedShelves;
-    }
-
-    public void setCheckedShelves(Set<String> checkedShelves) {
-        this.checkedShelves = checkedShelves;
-    }
-
-    public void run() {
+    @Override
+    public CookedOrder call() throws Exception {
         try {
             String orderId = this.cookedOrder.getId();
             ShelfInfo shelfInfo = this.cookedOrder.getShelfInfo();
-            log.trace("The courier" + Thread.currentThread().getId() + " get noticed to pick the order:" + orderId
-                    + " from " + shelfInfo.getName());
-            try {
-                int waitSecond = (new Random().nextInt(this.waitMax) % (this.waitMax - this.waitMin + 1)
-                        + this.waitMin);
-                log.trace("The courier" + Thread.currentThread().getId() + " will pick the order in :" + waitSecond
-                        + " seconds");
-                Thread.sleep(waitSecond * 1000);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            CookedOrder deliveryOrder = this.orderManager.takeOutOrder(shelfInfo.getAllowableTemperature(), orderId);
-            if (deliveryOrder == null
-                    && shelfInfo.getAllowableTemperature().equals(this.orderManager.getOverflowShelfKey())) {
-                checkedShelves = new HashSet<String>();
-                checkedShelves.add(this.orderManager.getOverflowShelfKey());
-                Map<String, ShelfInfo> shelfInfos = this.orderManager.getShelfInfos();
-                for (String shelfInfoKey : shelfInfos.keySet()) {
-                    if (checkedShelves.contains(shelfInfoKey))
-                        continue;
-                    checkedShelves.add(shelfInfoKey);
-                    deliveryOrder = this.orderManager.takeOutOrder(shelfInfoKey, orderId);
-                    if (deliveryOrder != null)
-                        break;
+            if (this.cookedOrder.getOrderStatus().equals(OrderStatus.Wasted)) {
+                this.orderManager.takeCurrentSnapshot("The courier " + Thread.currentThread().getId()
+                        + " get noticed to order:" + orderId + " is " + OrderStatus.Wasted.toString());
+            } else {
+                CookedOrder deliverOrder = null;
+                this.orderManager.takeCurrentSnapshot("The courier " + Thread.currentThread().getId()
+                        + " get noticed to pick the order:" + orderId + " from " + shelfInfo.getName());
+                try {
+                    int waitSecond = this.getWaitSecond();
+                    this.orderManager.takeCurrentSnapshot("The courier " + Thread.currentThread().getId()
+                            + " will pick the order in :" + waitSecond + " seconds");
+                    Thread.sleep(waitSecond * 1000);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                Map<String, CookedOrder> singleTempShelf = this.orderManager
+                        .getSingleTempShelf(shelfInfo.getAllowableTemperature());
+                synchronized (singleTempShelf) {
+                    deliverOrder = singleTempShelf.get(orderId);
+                    if (deliverOrder != null) {
+                        discardOrDeliver(deliverOrder, singleTempShelf);
+                    } else if (shelfInfo.getAllowableTemperature().equals(this.overflowShelfKey)) {
+                        Map<String, ShelfInfo> shelfInfos = this.orderManager.getShelfInfos();
+                        for (String shelfInfoKey : shelfInfos.keySet()) {
+                            if (shelfInfoKey.equals(this.overflowShelfKey))
+                                continue;
+                            Map<String, CookedOrder> otherSingleTempShelf = this.orderManager
+                                    .getSingleTempShelf(shelfInfoKey);
+                            synchronized (otherSingleTempShelf) {
+                                deliverOrder = otherSingleTempShelf.get(orderId);
+                                if (deliverOrder != null) {
+                                    discardOrDeliver(deliverOrder, otherSingleTempShelf);
+                                }
+                            }
+                        }
+                    }
+                }
+                if (deliverOrder == null) {
+                    this.orderManager.takeCurrentSnapshot("The courier " + Thread.currentThread().getId()
+                            + " didn't find the order:" + orderId + " in any shelf. it should be already discarded");
+                } else {
+                    if (deliverOrder.getFinalValue() < 0) {
+                        this.orderManager.takeCurrentSnapshot("The courier " + Thread.currentThread().getId()
+                                + " discard the order:" + orderId + " from the " + deliverOrder.getShelfInfo().getName()
+                                + " because the order's value:" + deliverOrder.getFinalValue() + " is below 0");
+                    } else {
+                        this.orderManager.takeCurrentSnapshot(
+                                "The courier " + Thread.currentThread().getId() + " pick up the order:" + orderId
+                                        + " from the " + deliverOrder.getShelfInfo().getName() + " and delivered");
+                    }
+
+                    this.cookedOrder = deliverOrder;
                 }
             }
-            if (deliveryOrder == null) {
-                log.trace("The courier" + Thread.currentThread().getId() + " is failed to delivered the order:"
-                        + orderId + ". The order should be already discard");
-            } else {
-                log.trace("The courier" + Thread.currentThread().getId() + " delivered the order:" + orderId);
-            }
+            return this.cookedOrder;
         } finally {
             this.courierCountDownLatch.countDown();
         }
-
     }
 
+    private int getWaitSecond() {
+        if (waitMax == waitMin) {
+            return waitMax;
+        }
+        return new Random().nextInt(waitMax - waitMin + 1) + waitMin;
+    }
+
+    private void discardOrDeliver(CookedOrder deliverOrder, Map<String, CookedOrder> singleTempShelf) {
+        singleTempShelf.remove(deliverOrder.getId());
+        deliverOrder.setFinalValue();
+        if (deliverOrder.getFinalValue() < 0) {
+            deliverOrder.setOrderStatus(OrderStatus.Wasted);
+            deliverOrder.setDiscardReason(DiscardReason.ValueIsBelowZero);
+            this.orderManager.getWastedOrders().add(deliverOrder);
+        } else {
+            deliverOrder.setOrderStatus(OrderStatus.Delivered);
+            this.orderManager.getDeliveredOrders().add(deliverOrder);
+        }
+    }
 }

@@ -6,37 +6,44 @@ import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.apache.log4j.Logger;
 
+import com.google.common.util.concurrent.FutureCallback;
+import com.google.common.util.concurrent.Futures;
+import com.google.common.util.concurrent.ListenableFuture;
+import com.google.common.util.concurrent.ListeningExecutorService;
+import com.google.common.util.concurrent.MoreExecutors;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 import restaurant.department.Courier;
 import restaurant.department.Kitchen;
-import restaurant.department.Monitor;
 import restaurant.department.OrderManager;
 import restaurant.department.OrderManagerImpl;
 import restaurant.pojo.CookedOrder;
 import restaurant.pojo.ShelfInfo;
 
 public class Restaurant {
-    private static Logger log = Logger.getLogger(Restaurant.class);
+    static Logger log = Logger.getLogger(Restaurant.class);
     private String shelfConfig = "shelves.json";
     private String orderConfig = "orders.json";
     private String config = "config.json";
-    private List<CookedOrder> orders;
-    private JsonObject configJsonObject;
-    private OrderManager orderManager;
+    public List<CookedOrder> orders;
+    public JsonObject configJsonObject;
+    public OrderManager orderManager;
     // Configuration
-    private int oneTimeReceive;
-    private int pauseBetweenReceive;
-    private int waitMin;
-    private int waitMax;
-    private CountDownLatch courierCountDownLatch;
-    public static boolean Restaurant_Is_Openning = true;
-    private Monitor monitor;
+    public int oneTimeReceive;
+    public int pauseBetweenReceive;
+    public int waitMin;
+    public int waitMax;
+    public int movingOrderTimeOut;
+    public CountDownLatch courierCountDownLatch;
+    public ListeningExecutorService listeningExecutorService;
+    public ExecutorService courierExecutorService;
 
     public Restaurant() {
         try {
@@ -59,8 +66,8 @@ public class Restaurant {
             JsonObject orderJsonObject = this.configJsonObject.get("order").getAsJsonObject();
             this.oneTimeReceive = orderJsonObject.get("one_time_receive").getAsInt();
             this.pauseBetweenReceive = orderJsonObject.get("receive_interval").getAsInt();
-            if (this.oneTimeReceive == 0) {
-                log.error("one_time_receive can not be 0, please modify config.json.");
+            if (this.oneTimeReceive <= 0) {
+                log.error("one_time_receive must be greater than 0, please modify config.json.");
                 System.exit(1);
             }
             if (this.pauseBetweenReceive < 0) {
@@ -78,16 +85,11 @@ public class Restaurant {
                 log.error("wait_max must greater than wait_min, please modify config.json.");
                 System.exit(1);
             }
-            this.orderManager = new OrderManagerImpl(shelfInfos,
-                    this.configJsonObject.get("moving_order_time_out").getAsInt());
-            JsonObject monitorJsonObject = this.configJsonObject.get("monitor").getAsJsonObject();
-            if (monitorJsonObject.get("work").getAsBoolean()) {
-                int workInterval = monitorJsonObject.get("work_interval").getAsInt();
-                if (workInterval <= 0) {
-                    log.error("work_interval must greater than 0, please modify config.json.");
-                    System.exit(1);
-                }
-                this.monitor = new Monitor(this.orderManager, workInterval);
+            this.orderManager = new OrderManagerImpl(shelfInfos);
+            this.movingOrderTimeOut = this.configJsonObject.get("moving_order_time_out").getAsInt();
+            if (movingOrderTimeOut < 0) {
+                log.error("moving_order_time_out must greater than 0, please modify config.json.");
+                System.exit(1);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -133,32 +135,39 @@ public class Restaurant {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Restaurant_Is_Openning = false;
         log.info("All orders served, the restaurant is closed.");
     }
 
-    private void startService() throws Exception {
-        if (this.monitor != null) {
-            this.monitor.start();
-        }
+    public void startService() throws InterruptedException {
         int receiveOrderCount = 0;
         courierCountDownLatch = new CountDownLatch(orders.size());
+        listeningExecutorService = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(orders.size()));
+        courierExecutorService = Executors.newFixedThreadPool(orders.size());
         for (CookedOrder order : orders) {
-            new Kitchen(this, this.orderManager, order).start();
+            ListenableFuture<CookedOrder> listenableFuture = listeningExecutorService
+                    .submit(new Kitchen(orderManager, order, movingOrderTimeOut));
+            Futures.addCallback(listenableFuture, new FutureCallback<CookedOrder>() {
+                @Override
+                public void onSuccess(CookedOrder order) {
+                    courierExecutorService
+                            .submit(new Courier(order, orderManager, waitMin, waitMax, courierCountDownLatch));
+
+                }
+
+                @Override
+                public void onFailure(Throwable t) {
+                    t.printStackTrace();
+                }
+            }, listeningExecutorService);
+
             receiveOrderCount++;
             if (receiveOrderCount % this.oneTimeReceive == 0) {
-                try {
-                    Thread.sleep(this.pauseBetweenReceive * 1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                Thread.sleep(this.pauseBetweenReceive * 1000);
             }
         }
         this.courierCountDownLatch.await();
-    }
-
-    public void notifyCourier(CookedOrder cookedOrder) {
-        new Courier(cookedOrder, this.orderManager, this.waitMin, this.waitMax, this.courierCountDownLatch).start();
+        listeningExecutorService.shutdown();
+        courierExecutorService.shutdown();
     }
 
 }

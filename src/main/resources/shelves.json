@@ -2,25 +2,25 @@
     "hot": {
         "name": "Hot shelf",
         "allowableTemperature": "hot",
-        "capacity": 1,
+        "capacity": 5,
         "shelfDecayModifier": 1
     },
     "cold": {
         "name": "Cold shelf",
         "allowableTemperature": "cold",
-        "capacity": 1,
+        "capacity": 5,
         "shelfDecayModifier": 1
     },
     "frozen": {
         "name": "Frozen shelf",
         "allowableTemperature": "frozen",
-        "capacity": 1,
+        "capacity": 5,
         "shelfDecayModifier": 1
     },
     "anyTemperature": {
         "name": "Overflow shelf",
         "allowableTemperature": "anyTemperature",
-        "capacity": 3,
+        "capacity": 10,
         "shelfDecayModifier": 2,
         "isOverFlowShelf": true
     }

@@ -1,21 +1,25 @@
 package restaurant.department;
 
 import java.util.Map;
+import java.util.Vector;
 
 import restaurant.pojo.CookedOrder;
 import restaurant.pojo.ShelfInfo;
 
 public interface OrderManager {
-    CookedOrder takeOutOrder(String allowedTemperature, String orderId);
 
-    boolean putIntoShelf(CookedOrder cookedOrder, String allowedTemperature);
-
-    boolean moveOutOrderFromOverFlow(CookedOrder cookedOrder);
-
-    String getOverflowShelfKey();
+    Map<String, CookedOrder> getSingleTempShelf(String allowedTemperature);
 
     Map<String, ShelfInfo> getShelfInfos();
 
-    void displayAllOrderStatus();
+    ShelfInfo getShelfInfo(String allowedTemperature);
+
+    void takeCurrentSnapshot(String event);
+
+    String getOverflowShelfKey();
+
+    public Vector<CookedOrder> getDeliveredOrders();
+
+    public Vector<CookedOrder> getWastedOrders();
 
 }
