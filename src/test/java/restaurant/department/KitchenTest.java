@@ -1,5 +1,6 @@
 package restaurant.department;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -27,9 +28,14 @@ public class KitchenTest {
     @Before
     public void setUp() throws Exception {
         restaurant = new Restaurant();
-        orders = this.restaurant.orders;
+        orders = new ArrayList<CookedOrder>();
+        for (int i = 0; i < 5; i++) {
+            orders.add(this.restaurant.orders.get(i));
+        }
+        restaurant.orders = orders;
         orderManager = this.restaurant.orderManager;
         this.shelfInfos = this.restaurant.orderManager.getShelfInfos();
+
     }
 
     @After
@@ -99,6 +105,30 @@ public class KitchenTest {
         new Kitchen(orderManager, order2, restaurant.movingOrderTimeOut).call();
         Map<String, CookedOrder> singleTempShelf = this.orderManager.getSingleTempShelf(temp);
         Assert.assertEquals(allowedCapacity, singleTempShelf.size());
+        singleTempShelf = this.orderManager.getSingleTempShelf(this.orderManager.getOverflowShelfKey());
+        Assert.assertEquals(1, singleTempShelf.size());
+
+    }
+
+    /**
+     * make the capacity of both specific shelf and overflow shelf to 0, then should
+     * pop up window;
+     */
+    @Test
+    public void testMoveOutOrder() {
+        CookedOrder order1 = orders.get(0);
+        CookedOrder order2 = orders.get(1);
+        String temp = order1.getTemp();
+        order2.setTemp("i'm not any of a shelf");
+        // set the shelf capacity to 1
+        shelfInfos.get(temp).setCapacity(0);
+        shelfInfos.get(this.orderManager.getOverflowShelfKey()).setCapacity(1);
+        // put the 2 order to the same shelf which only have 1 capacity, one should be
+        // put in and another should be put in overflow
+        new Kitchen(orderManager, order1, restaurant.movingOrderTimeOut).call();
+        new Kitchen(orderManager, order2, restaurant.movingOrderTimeOut).call();
+        Map<String, CookedOrder> singleTempShelf = this.orderManager.getSingleTempShelf(temp);
+        Assert.assertEquals(0, singleTempShelf.size());
         singleTempShelf = this.orderManager.getSingleTempShelf(this.orderManager.getOverflowShelfKey());
         Assert.assertEquals(1, singleTempShelf.size());
 

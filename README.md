@@ -133,5 +133,26 @@
 										# Unlock the overflow shelf, 
 										# Unlock the moving action.
 										# Return true.
+### Any other design choices you would like the interviewers to know
+	
+	# Asynchronous callback. The kitchen put the order to the shelf and call the courier, the kitchen thread should end, the courier is another thread.
+	
+		# 3 method to implements this.
+			
+			# Basic Thread way: Create an method in restaurant like below, the kitchen thread call this method before finished.
+				public void notifyCourier(CookedOrder cookedOrder, CountDownLatch countCourier) {
+	        		new Courier(cookedOrder, orderManager, countCourier).start();
+	    		}
+	    	
+	    	# ListenableFuture: Asynchronous monitor the Future object, this way we could get the return cooked order asynchronously, it's more friendly for noth the next step logic, or for unit test, and elegant way compare with the Basic thread.
+
+	    	# CompletableFuture: Also a fine way to implement Asynchronous callback, I didn't pick it because I'm more familiar with ListenableFuture.
+
+    # The put_order_into_shelf is like a flow: Try specific --> Try overflow --> Move out one from overflow. So define an enum to mark the order status <Cooked, PutIntoSpecificShelf, PutIntoOverflowShelf, InTheShelf, Delivered, Wasted> to mark the order status in any situation, and check the status in an switch and decide what to do next, In this way, if the flow is changed in the future, then we could define the new status with corresponding action in the switch part.
+
+    
+
+
+
 
 

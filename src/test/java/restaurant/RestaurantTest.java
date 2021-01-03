@@ -41,7 +41,11 @@ public class RestaurantTest {
     @Before
     public void setUp() throws Exception {
         restaurant = new Restaurant();
-        orders = this.restaurant.orders;
+        orders = new ArrayList<CookedOrder>();
+        for (int i = 0; i < 5; i++) {
+            orders.add(this.restaurant.orders.get(i));
+        }
+        restaurant.orders = orders;
         orderManager = this.restaurant.orderManager;
         listeningExecutorService = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(orders.size()));
         this.shelfInfos = this.restaurant.orderManager.getShelfInfos();
@@ -184,5 +188,7 @@ public class RestaurantTest {
         }
 
     }
+
+   
 
 }

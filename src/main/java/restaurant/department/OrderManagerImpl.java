@@ -45,6 +45,10 @@ public class OrderManagerImpl implements OrderManager {
             throw new Exception(
                     "Please check the shelves.json, must set the 'isOverFlowShelf:true' in one shelf in the list");
         }
+        if (this.shelfInfos.get(this.overflowShelfKey).getCapacity() <= 0) {
+            throw new Exception(
+                    "Please check the shelves.json, must set the 'capacity' > 0 in one shelf which contains 'isOverFlowShelf:true'");
+        }
         this.deliveredOrders = new Vector<CookedOrder>();
         this.wastedOrders = new Vector<CookedOrder>();
     }
