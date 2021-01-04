@@ -1,6 +1,6 @@
 {
     "order": {
-        "one_time_receive": 10,
+        "one_time_receive": 2,
         "receive_interval": 1
     },
     "courier": {
